@@ -5,10 +5,13 @@ import { Home, News } from '@styled-icons/boxicons-regular'
 const SideBarContentContainer = styled.div`
 text-align: center;
 width: 100%;
+
+    @media ${(props) => props.theme.device.    TabletPortrait}{
+        display: none;
+    }
 `;
 
 const DomesticContainer = styled.div`
-border: 1px solid blue;
 display: flex;
 cursor: pointer;
 align-items: center;
@@ -17,6 +20,7 @@ padding: 0.5rem 0;
     &:hover {
         background-color: ${(props) => props.theme.color.hoverColor};
     }
+
 `;
 const DomesticStatus = styled.div`
 `;
@@ -27,7 +31,6 @@ padding-left: 0.5rem;
 `;
 
 const NewsContainer = styled.div`
-border: 1px solid blue;
 display: flex;
 cursor: pointer;
 align-items: center;

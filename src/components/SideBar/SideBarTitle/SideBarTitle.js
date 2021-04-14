@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SideBarTitleContainer = styled.div`
-border: 1px solid blue;
-padding: 2rem 0;
+padding: 2rem 1rem;
+
+    @media ${(props) => props.theme.device.TabletPortrait}{
+        padding: 0;
+    }
 `;
 
 function SideBarTitle() {
