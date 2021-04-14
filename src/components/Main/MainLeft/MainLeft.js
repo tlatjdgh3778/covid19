@@ -2,15 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MainLeftContainer = styled.div`
-border: 1px solid white;
-margin-right: 2.5rem;
+margin: 1rem;
 min-height: 60rem;
 color: white;
+min-width: 33rem;
+    @media ${(props) => props.theme.device.    TabletPortrait}{
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        width: 100%;
+        min-width: 100%;
+    }
 `;
-function MainLeft() {
+
+const DomesticStatus = styled.div`
+
+`;
+
+function MainLeft({koreaData, cityData}) {
 
     return(
-        <MainLeftContainer>Left</MainLeftContainer>
+        <MainLeftContainer>
+            <DomesticStatus>국내현황</DomesticStatus>
+        </MainLeftContainer>
     );
 }
 
