@@ -6,7 +6,7 @@ const SideBarContentContainer = styled.div`
 text-align: center;
 width: 100%;
 
-    @media ${(props) => props.theme.device.    TabletPortrait}{
+    @media ${(props) => props.theme.device.TabletPortrait}{
         display: none;
     }
 `;
