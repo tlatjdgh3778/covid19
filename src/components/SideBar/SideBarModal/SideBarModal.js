@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Close } from '@styled-icons/evaicons-solid';
-import SideBarContent from '../SideBarContent/SideBarContent';
+import { Github } from '@styled-icons/boxicons-logos';
 
 const Background = styled.div`
     position: fixed;
@@ -9,7 +9,7 @@ const Background = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.50);
+    background-color: rgb(0, 0, 0, 0.5);;
     z-index: 0;
 `;
 
@@ -35,7 +35,7 @@ const MenuContainer = styled.div`
 display: flex;
 flex-direction: column;
 width: 100%;
-height: 90%;
+height: 80%;
 padding-top: 3rem;
 `;
 const CloseIcon = styled(Close)`
@@ -65,6 +65,24 @@ border-radius: 10px;
         background-color: ${(props) => props.theme.color.hoverColor};
     }
 `;
+
+const Mode = styled.div`
+padding: 1rem 0;
+cursor: pointer;
+border-radius: 10px;
+`;
+
+const GithubContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+`;
+const GithubIcon = styled(Github)`
+color: ${(props) => props.theme.color.fontColor};
+width: 2rem;
+margin-right: 0.5rem;
+`;
 function SideBarModal({showModal, setShowModal, closeModal}) {
 
     const onNewsClick = () => {
@@ -77,13 +95,18 @@ function SideBarModal({showModal, setShowModal, closeModal}) {
         <>
         {showModal ? 
         <Background onClick={closeModal}>
-            <ModalContainer>
+            <ModalContainer onClick={e => e.stopPropagation()}>
                 <div>메뉴</div>
                 <CloseIcon onClick={closeModal}></CloseIcon>
-                {/* <MenuContainer>
+                <MenuContainer>
                     <DomesticStatus onClick={onDomesticClick}>국내 현황</DomesticStatus>
                     <News onClick={onNewsClick}>뉴스</News>
-                </MenuContainer> */}
+                    <Mode>라이트 모드</Mode>
+                    <GithubContainer>
+                        <GithubIcon></GithubIcon>
+                        <div>Github</div>
+                    </GithubContainer>
+                </MenuContainer>
             </ModalContainer>
         </Background> : null}
         </>
