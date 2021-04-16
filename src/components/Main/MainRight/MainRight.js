@@ -5,12 +5,14 @@ const MainRightContainer = styled.div`
 color: white;
 margin: 1rem;
 min-height: 60rem;
-min-width: 33rem;
-    @media ${(props) => props.theme.device.    TabletPortrait}{
+min-width: 39rem;
+border: 1px solid white;
+
+    @media ${(props) => props.theme.device.TabletPortrait}{
         display: -webkit-flex;
         display: flex;
         flex-direction: column;
-        margin: 0;
+        margin: 1rem 0;
         width: 100%;
         min-width: 100%;
     }

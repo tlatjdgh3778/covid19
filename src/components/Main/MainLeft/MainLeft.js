@@ -5,7 +5,9 @@ const MainLeftContainer = styled.div`
 margin: 1rem;
 min-height: 60rem;
 color: white;
-min-width: 33rem;
+min-width: 39rem;
+border: 1px solid white;
+
     @media ${(props) => props.theme.device.    TabletPortrait}{
         display: -webkit-flex;
         display: flex;
