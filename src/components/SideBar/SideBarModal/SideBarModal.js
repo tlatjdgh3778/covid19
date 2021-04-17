@@ -10,7 +10,7 @@ const Background = styled.div`
     bottom: 0;
     right: 0;
     background-color: rgb(0, 0, 0, 0.5);;
-    z-index: 0;
+    z-index: 1000;
 `;
 
 const ModalContainer = styled.div`
