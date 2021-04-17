@@ -4,7 +4,7 @@ import CityStatus from './CityStatus/CityStatus';
 
 const MainLeftContainer = styled.div`
 margin: 1rem;
-color: white;
+color: ${(props) => props.theme.color.fontColor};
 border: 1px solid white;
 
     @media ${(props) => props.theme.device.TabletPortrait}{

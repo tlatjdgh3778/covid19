@@ -9,9 +9,9 @@ const MainContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 11rem;
-    width: 100%;
     margin-right: 3rem;
     padding-top: 5rem;
+    color: ${(props) => props.theme.color.fontColor};
   
     @media ${(props) => props.theme.device.TabletLandscape}{
         margin-left: 9rem;
@@ -31,7 +31,7 @@ function Main({koreaData, cityData}) {
     return(
         <MainContainer>
             <MainLeft koreaData={koreaData} cityData={cityData}></MainLeft>
-            <MainRight></MainRight>
+            <MainRight koreaData={koreaData} cityData={cityData}></MainRight>
         </MainContainer>
     );
 
