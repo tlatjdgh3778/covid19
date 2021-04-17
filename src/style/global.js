@@ -12,6 +12,18 @@ body {
 box-sizing: border-box;
 background-color: ${(props) => props.theme.color.wallpaperColor};
 }
+
+.leaflet-container {
+    background-color: ${(props) => props.theme.color.bgColor};
+}
+
+.leaflet-control-zoom {
+    display: none;
+}
+.leaflet-control-attribution{
+    display: none
+}
 `;
+
 
 export default GlobalStyle;
