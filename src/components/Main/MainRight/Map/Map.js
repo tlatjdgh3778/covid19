@@ -21,13 +21,26 @@ const cityStyle = {
 }
 const CityName = styled.div`
 margin: 1rem;
+font-weight: 700;
 font-size: ${(props) => props.theme.fontSize.lg};
+`;
+const CityCaseContainer = styled.div`
+display: flex;
+flex-direction: column;
+margin: 1rem;
+`;
+const CityCase = styled.div`
+font-weight: 700;
+font-size: ${(props) => props.theme.fontSize.lg};
+`;
+const CityCaseStatus = styled.div`
 `;
 
 function Map({koreaData, cityData}) {
     const [name, setName] = useState({
         name:'서울',
-        case:cityData.seoul.newCase
+        case:cityData.seoul.newCase,
+        totalCase:cityData.seoul.totalCase,
     });
 
     const onEachCity = (city, layer) => {
@@ -39,55 +52,55 @@ function Map({koreaData, cityData}) {
                 e.target.setStyle({fillColor: 'red'});
                 switch(cityName){
                     case 'seoul':
-                        setName({name: '서울', case: cityData.seoul.newCase});
+                        setName({name: '서울', case: cityData.seoul.newCase, totalCase: cityData.seoul.totalCase});
                         break;
                     case 'incheon':
-                        setName({name: '인천', case: cityData.incheon.newCase});
+                        setName({name: '인천', case: cityData.incheon.newCase, totalCase: cityData.incheon.totalCase});
                         break;
                     case 'gyeonggi':
-                        setName({name: '경기', case: cityData.gyeonggi.newCase});
+                        setName({name: '경기', case: cityData.gyeonggi.newCase, totalCase: cityData.gyeonggi.totalCase});
                         break;
                     case 'gangwon':
-                        setName({name: '강원', case: cityData.gangwon.newCase});
+                        setName({name: '강원', case: cityData.gangwon.newCase, totalCase: cityData.gangwon.totalCase});
                         break;
                     case 'chungbuk':
-                        setName({name: '충북', case: cityData.chungbuk.newCase});
+                        setName({name: '충북', case: cityData.chungbuk.newCase, totalCase: cityData.chungbuk.totalCase});
                         break;
                     case 'chungnam':
-                        setName({name: '충남', case: cityData.chungnam.newCase});
+                        setName({name: '충남', case: cityData.chungnam.newCase, totalCase: cityData.chungnam.totalCase});
                         break;
                     case 'daejeon':
-                        setName({name: '대전', case: cityData.daejeon.newCase});
+                        setName({name: '대전', case: cityData.daejeon.newCase, totalCase: cityData.daejeon.totalCase});
                         break;
                     case 'sejong':
-                        setName({name: '세종', case: cityData.sejong.newCase});
+                        setName({name: '세종', case: cityData.sejong.newCase, totalCase: cityData.sejong.totalCase});
                         break;
                     case 'jeonnam':
-                        setName({name: '전남', case: cityData.jeonnam.newCase});
+                        setName({name: '전남', case: cityData.jeonnam.newCase, totalCase: cityData.jeonnam.totalCase});
                         break;
                     case 'jeonbuk':
-                        setName({name: '전북', case: cityData.jeonbuk.newCase});
+                        setName({name: '전북', case: cityData.jeonbuk.newCase, totalCase: cityData.jeonbuk.totalCase});
                         break;
                     case 'gwangju':
-                        setName({name: '광주', case: cityData.gwangju.newCase});
+                        setName({name: '광주', case: cityData.gwangju.newCase, totalCase: cityData.gwangju.totalCase});
                         break;
                     case 'gyeongbuk':
-                        setName({name: '경북', case: cityData.gyeongbuk.newCase});
+                        setName({name: '경북', case: cityData.gyeongbuk.newCase, totalCase: cityData.gyeongbuk.totalCase});
                         break;
                     case 'daegu':
-                        setName({name: '대구', case: cityData.daegu.newCase});
+                        setName({name: '대구', case: cityData.daegu.newCase, totalCase: cityData.daegu.totalCase});
                         break;
                     case 'ulsan':
-                        setName({name: '울산', case: cityData.ulsan.newCase});
+                        setName({name: '울산', case: cityData.ulsan.newCase, totalCase: cityData.ulsan.totalCase});
                         break;
                     case 'busan':
-                        setName({name: '부산', case: cityData.busan.newCase});
+                        setName({name: '부산', case: cityData.busan.newCase, totalCase: cityData.busan.totalCase});
                         break;
                     case 'gyeongnam':
-                        setName({name: '경남', case: cityData.gyeongnam.newCase});
+                        setName({name: '경남', case: cityData.gyeongnam.newCase, totalCase: cityData.gyeongnam.totalCase});
                         break;
                     case 'jeju':
-                        setName({name: '제주', case: cityData.jeju.newCase});
+                        setName({name: '제주', case: cityData.jeju.newCase, totalCase: cityData.jeju.totalCase});
                         break;
                 }
             },
@@ -100,10 +113,24 @@ function Map({koreaData, cityData}) {
             },
         });
 }
+const UpdateTime = styled.div`
+margin-left: 1rem;
+margin-right: 1rem;
+margin-bottom: 0.5rem;
+font-size: ${(props) => props.theme.fontSize.ssm};
+`;
     return(
         <>
+        <UpdateTime>{koreaData.updateTime}</UpdateTime>
         <CityName>{name.name}</CityName>
-        <CityName>당일 확진자 : {name.case}</CityName>
+        <CityCaseContainer>
+            <CityCase>{name.case}</CityCase>
+            <CityCaseStatus>당일 확진자</CityCaseStatus>
+        </CityCaseContainer>
+        <CityCaseContainer>
+            <CityCase>{name.totalCase}</CityCase>
+            <CityCaseStatus>누적 확진자</CityCaseStatus>
+        </CityCaseContainer>
         <MapContainerCustom
         zoom={6.5}
         center={[36, 128]}>
