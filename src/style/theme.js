@@ -36,7 +36,7 @@ const darkMode = {
     color: {
         wallpaperColor: '#1b2635',
         bgColor: '#233044',
-        fontColor: '#f0f1f2',
+        fontColor: '#6c757d',
 
         highlightColor: '#2c1952',
         hoverColor: '#152338',
