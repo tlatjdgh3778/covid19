@@ -6,7 +6,6 @@ const MainRightContainer = styled.div`
 color: ${(props) => props.theme.color.fontColor};
 margin: 1rem;
 min-height: 60rem;
-border: 1px solid white;
 
     @media ${(props) => props.theme.device.TabletPortrait}{
         display: -webkit-flex;

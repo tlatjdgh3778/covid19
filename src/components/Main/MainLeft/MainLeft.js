@@ -3,10 +3,14 @@ import styled, {css} from 'styled-components';
 import CityStatus from './CityStatus/CityStatus';
 
 const MainLeftContainer = styled.div`
-margin: 1rem;
-color: ${(props) => props.theme.color.fontColor};
-border: 1px solid white;
 
+margin-right: 6rem;
+color: ${(props) => props.theme.color.fontColor};
+
+
+    @media ${(props) => props.theme.device.TabletLandscape}{
+        margin: 1rem;
+    }
     @media ${(props) => props.theme.device.TabletPortrait}{
         display: flex;
         flex-direction: column;
@@ -17,32 +21,33 @@ border: 1px solid white;
 `;
 
 const DomesticStatusTitle = styled.div`
-border: 1px solid white;
 margin: 1rem;
+padding-bottom: 1rem;
 font-size: ${(props) => props.theme.fontSize.lg};
+border-bottom: 1px solid ${(props) => props.theme.color.fontColor};
 `;
 const DomesticStatusContainer = styled.div`
 display: flex;
-border: 1px solid white;
 margin: 0 1rem;
 justify-content: space-between;
 `;
-const UpdateTime = styled.div`
-margin-left: 1rem;
-margin-right: 1rem;
-margin-bottom: 0.5rem;
-font-size: ${(props) => props.theme.fontSize.ssm};
-`;
+
 const container = css`
-border: 1px solid white;
+border-radius: 10px;
 display: flex;
 flex-direction: column;
 align-items: center;
-margin: 0 1rem;
+/* margin: 0 1rem; */
 padding: 0.5rem 1rem;
 width: 4rem;
 height: 5rem;
 justify-content: space-between;
+cursor: default;
+
+    &:hover{
+        background-color: ${(props) => props.theme.color.hoverColor};
+    }
+
     @media ${(props) => props.theme.device.TabletPortrait}{
             margin: 0;
         }
@@ -65,6 +70,7 @@ const Title = styled.div`
 `;
 const Data = styled.div`
 font-size: ${(props) => props.theme.fontSize.lg};
+font-weight: 700;
 
     @media ${(props) => props.theme.device.TabletPortrait}{
         font-size: ${(props) => props.theme.fontSize.md};
@@ -90,7 +96,6 @@ function MainLeft({koreaData, cityData}) {
     return(
         <MainLeftContainer>
             <DomesticStatusTitle>국내현황</DomesticStatusTitle>
-            <UpdateTime>{koreaData.updateTime}</UpdateTime>
             <DomesticStatusContainer>
                 {names.map((name, i)=>{
                     return(
