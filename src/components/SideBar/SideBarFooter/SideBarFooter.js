@@ -11,7 +11,7 @@ const SideBarFooterContainer = styled.div`
     bottom: 0;
     margin-bottom: 1rem;
 
-    @media ${(props) => props.theme.device.    TabletPortrait}{
+    @media ${(props) => props.theme.device.TabletPortrait}{
         display: none;
     }
 `;

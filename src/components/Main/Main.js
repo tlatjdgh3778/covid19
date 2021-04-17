@@ -28,7 +28,6 @@ const MainContainer = styled.div`
     
 `;
 function Main({koreaData, cityData}) {
-console.log(koreaData);
     return(
         <MainContainer>
             <MainLeft koreaData={koreaData} cityData={cityData}></MainLeft>

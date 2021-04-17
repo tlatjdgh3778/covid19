@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
+import CityStatus from './CityStatus/CityStatus';
 
 const MainLeftContainer = styled.div`
 margin: 1rem;
@@ -18,6 +19,7 @@ border: 1px solid white;
 const DomesticStatusTitle = styled.div`
 border: 1px solid white;
 margin: 1rem;
+font-size: ${(props) => props.theme.fontSize.lg};
 `;
 const DomesticStatusContainer = styled.div`
 display: flex;
@@ -25,7 +27,12 @@ border: 1px solid white;
 margin: 0 1rem;
 justify-content: space-between;
 `;
-
+const UpdateTime = styled.div`
+margin-left: 1rem;
+margin-right: 1rem;
+margin-bottom: 0.5rem;
+font-size: ${(props) => props.theme.fontSize.ssm};
+`;
 const container = css`
 border: 1px solid white;
 display: flex;
@@ -47,11 +54,6 @@ justify-content: space-between;
         
 `;
 
-
-// 누적 확진자 : TotalCase, city_url.korea.newCase
-// 격리해제(완치) : TotalRecovered, TodayRecovered
-// 격리중(치료중) : NowCase, TotalCaseBefore
-// 사망자 수 : TotalDeath, TodayDeath
 const TotalContainer = styled.div`
 ${container};
 `;
@@ -88,10 +90,11 @@ function MainLeft({koreaData, cityData}) {
     return(
         <MainLeftContainer>
             <DomesticStatusTitle>국내현황</DomesticStatusTitle>
+            <UpdateTime>{koreaData.updateTime}</UpdateTime>
             <DomesticStatusContainer>
-                {names.map(name=>{
+                {names.map((name, i)=>{
                     return(
-                        <TotalContainer key={name.resultCode}>
+                        <TotalContainer key={i}>
                             {koreaData === undefined || cityData === undefined?
                             <div>loading animation</div>
                             :
@@ -149,6 +152,7 @@ function MainLeft({koreaData, cityData}) {
                 })}
                 
             </DomesticStatusContainer>
+            <CityStatus cityData={cityData}></CityStatus>
         </MainLeftContainer>
     );
 }
