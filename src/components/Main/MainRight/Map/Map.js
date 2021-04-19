@@ -3,9 +3,10 @@ import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import mapData from '../../../../data/cities.json';
 import styled from 'styled-components';
+import CountUp from 'react-countup';
 
 const MapContainerCustom = styled(MapContainer)`
-background-color: #233044;
+/* background-color: ${(props) => props.theme.color.bgColor}; */
 width: 35rem;
 height: 70vh;
 
@@ -31,18 +32,19 @@ margin: 1rem;
 `;
 const CityCase = styled.div`
 font-weight: 700;
+color: ${(props) => props.theme.color.fontRed};
 font-size: ${(props) => props.theme.fontSize.lg};
 `;
 const CityCaseStatus = styled.div`
 `;
 
-function Map({koreaData, cityData}) {
+function Map({koreaData, cityData, isDark}) {
     const [name, setName] = useState({
         name:'서울',
         case:cityData.seoul.newCase,
         totalCase:cityData.seoul.totalCase,
     });
-
+    
     const onEachCity = (city, layer) => {
         const cityName = city.properties.CTP_ENG_NM;
 
@@ -119,16 +121,32 @@ margin-right: 1rem;
 margin-bottom: 0.5rem;
 font-size: ${(props) => props.theme.fontSize.ssm};
 `;
+const newCase = parseInt(name.case.replace(/,/g , ''))
+const newTotalCase = parseInt(name.totalCase.replace(/,/g , ''))
     return(
         <>
         <UpdateTime>{koreaData.updateTime}</UpdateTime>
         <CityName>{name.name}</CityName>
         <CityCaseContainer>
-            <CityCase>{name.case}</CityCase>
+            <CityCase>
+                <CountUp
+                start={0}
+                end={newCase}
+                duration={1.5}
+                separator=",">
+                </CountUp>
+            </CityCase>
             <CityCaseStatus>당일 확진자</CityCaseStatus>
         </CityCaseContainer>
         <CityCaseContainer>
-            <CityCase>{name.totalCase}</CityCase>
+            <CityCase>
+                <CountUp
+                start={0}
+                end={newTotalCase}
+                duration={1.5}
+                separator=",">
+                </CountUp>
+            </CityCase>
             <CityCaseStatus>누적 확진자</CityCaseStatus>
         </CityCaseContainer>
         <MapContainerCustom

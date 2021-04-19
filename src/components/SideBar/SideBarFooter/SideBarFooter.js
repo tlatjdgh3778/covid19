@@ -16,7 +16,13 @@ const SideBarFooterContainer = styled.div`
     }
 `;
 
-const ModeIcon = styled(LightMode)`
+const LightModeIcon = styled(LightMode)`
+color: ${(props) => props.theme.color.iconColor};
+width: 3rem;
+cursor: pointer;
+`;
+
+const DarkModeIcon = styled(DarkMode)`
 color: ${(props) => props.theme.color.fontColor};
 width: 3rem;
 cursor: pointer;
@@ -28,11 +34,17 @@ width: 3rem;
 cursor: pointer;
 `;
 
-function SideBarFooter(){
+function SideBarFooter({changeTheme, isDark}){
+
+    const onClick = () => {
+        changeTheme(isDark);
+    }
 
     return(
         <SideBarFooterContainer>
-            <ModeIcon />
+                <div onClick={onClick}>
+                {isDark?<LightModeIcon />:<DarkModeIcon />}
+                </div>
             <GithubIcon />
         </SideBarFooterContainer>
     );

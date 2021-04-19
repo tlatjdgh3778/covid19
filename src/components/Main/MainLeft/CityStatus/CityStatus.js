@@ -3,6 +3,7 @@ import styled, {css} from 'styled-components';
 
 const CityContainer = styled.div`
 margin: 1rem;
+font-weight: 700;
 font-size: ${(props) => props.theme.fontSize.lg};
 `;
 
@@ -27,7 +28,8 @@ cursor: default;
 `;
 const TableTitle = styled.div`
 ${Content};
-font-size: ${(props) => props.theme.fontSize.ssm};
+font-weight: 700;
+font-size: ${(props) => props.theme.fontSize.sm};
 border: none;
 background-color: ${(props) => props.theme.color.bgColor};
 `;

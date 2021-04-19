@@ -13,6 +13,11 @@ box-sizing: border-box;
 background-color: ${(props) => props.theme.color.wallpaperColor};
 }
 
+a {
+    text-decoration: none;
+    color: ${(props) => props.theme.color.fontColor};
+}
+
 .leaflet-container {
     background-color: ${(props) => props.theme.color.bgColor};
 }

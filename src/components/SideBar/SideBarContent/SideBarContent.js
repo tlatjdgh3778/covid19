@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Home, News } from '@styled-icons/boxicons-regular'
+import { NavLink } from 'react-router-dom';
 
 const SideBarContentContainer = styled.div`
 text-align: center;
@@ -49,16 +50,31 @@ padding-left: 0.5rem;
 `;
 
 function SideBarContent() {
+    const onClick = e => {
+        if(e.currentTarget.className.includes('domestic'))
+        {
+            console.log('domestic');
+        }else if(e.currentTarget.className.includes('news')){
+            console.log('news');
+        }
+    }
+    
     return(
         <SideBarContentContainer>
-            <DomesticContainer>
-                <HomeIcon/>
-                <DomesticStatus>국내 현황</DomesticStatus>
-            </DomesticContainer>   
-            <NewsContainer> 
-                <NewsIcon/>
-                <NewsContent>코로나 뉴스</NewsContent>
-            </NewsContainer>    
+            <NavLink exact to="/">
+                <DomesticContainer>
+                    <HomeIcon/>
+                    <DomesticStatus>
+                    국내 현황
+                    </DomesticStatus>
+                </DomesticContainer>   
+            </NavLink>
+            <NavLink to="/world">
+                <NewsContainer> 
+                    <NewsIcon/>
+                    <NewsContent>세계 현황</NewsContent>
+                </NewsContainer>    
+            </NavLink>
         </SideBarContentContainer>
     );
 }

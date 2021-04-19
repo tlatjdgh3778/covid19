@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Map from './Map/Map';
+import WorldMap from './WorldMap/WorldMap';
 
-const MainRightContainer = styled.div`
+const WorldRightContainer = styled.div`
 color: ${(props) => props.theme.color.fontColor};
 margin: 1rem;
 min-height: 60rem;
@@ -16,13 +16,13 @@ min-height: 60rem;
         /* min-width: 100%; */
     }
 `;
-function MainRight({koreaData, cityData, isDark}) {
+function WorldRight() {
 
     return(
-        <MainRightContainer>
-            <Map koreaData={koreaData} cityData={cityData} isDark={isDark}></Map>
-        </MainRightContainer>
+        <WorldRightContainer>
+            <WorldMap></WorldMap>
+        </WorldRightContainer>
     );
 }
 
-export default MainRight;
+export default WorldRight;

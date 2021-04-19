@@ -4,6 +4,7 @@ import GlobalStyle from '../src/style/global';
 import SideBar from './components/SideBar/SideBar';
 import Main from './components/Main/Main';
 import styled, { ThemeProvider } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
 import theme from './style/theme';
 
 const AppStyle = styled.div`
@@ -20,7 +21,6 @@ flex-direction: column;
 // 사망자 수 : TotalDeath, TodayDeath
 function App() {
   const [isDark, setIsDark ] = useState(true);
-  const [page, setPage] = useState('domestic');
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({
     koreaData:"",
@@ -45,7 +45,6 @@ function App() {
       korea:"",
     }
   });
-
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   const korea_url = `https://ajax-api.corona-19.kr/?dir=korea&serviceKey=${API_KEY}`;
@@ -92,17 +91,24 @@ function App() {
   text-align: center;
   top: 30rem;
   `;
+
+const changeTheme = () => {
+  setIsDark(!isDark);
+}
+
   return (
     <>
+    <BrowserRouter>
     <ThemeProvider theme={isDark? theme.darkMode : theme.lightMode}>
       <GlobalStyle/>
         <AppStyle>
-            <SideBar></SideBar>
+            <SideBar changeTheme={changeTheme} isDark={isDark}></SideBar>
             {isLoading || !data.koreaData ? 
             <LoadingContainer>loading...</LoadingContainer> : 
-            <Main koreaData={data.koreaData} cityData={data.cityData}></Main>}
+            <Main koreaData={data.koreaData} cityData={data.cityData} isDark={isDark}></Main>}
         </AppStyle>
     </ThemeProvider>
+    </BrowserRouter>
     </>
   );
 }

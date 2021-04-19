@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import MainLeft from './MainLeft/MainLeft';
 import MainRight from './MainRight/MainRight';
+import World from './World/World';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const MainContainer = styled.div`
     display: flex;
@@ -27,12 +29,21 @@ const MainContainer = styled.div`
     }
     
 `;
-function Main({koreaData, cityData}) {
+function Main({koreaData, cityData, isDark}) {
     return(
-        <MainContainer>
-            <MainLeft koreaData={koreaData} cityData={cityData}></MainLeft>
-            <MainRight koreaData={koreaData} cityData={cityData}></MainRight>
-        </MainContainer>
+        <Switch>
+            <Route exact path="/">
+                <MainContainer>
+                    <MainLeft koreaData={koreaData} cityData={cityData}></MainLeft>
+                    <MainRight koreaData={koreaData} cityData={cityData} isDark={isDark}></MainRight>
+                </MainContainer>
+            </Route>
+            <Route exact path="/world">
+                <MainContainer>
+                    <World></World>
+                </MainContainer>
+            </Route>
+        </Switch>
     );
 
 }

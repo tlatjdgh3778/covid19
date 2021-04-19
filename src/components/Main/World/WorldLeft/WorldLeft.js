@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
-import CityStatus from './CityStatus/CityStatus';
+import CountUp from 'react-countup';
 
-const MainLeftContainer = styled.div`
+const WorldLeftContainer = styled.div`
 
 margin-right: 6rem;
 color: ${(props) => props.theme.color.fontColor};
@@ -20,14 +20,14 @@ color: ${(props) => props.theme.color.fontColor};
     }
 `;
 
-const DomesticStatusTitle = styled.div`
+const WorldStatusTitle = styled.div`
 margin: 1rem;
 padding-bottom: 1rem;
 font-weight: 700;
 font-size: ${(props) => props.theme.fontSize.lg};
 border-bottom: 1px solid ${(props) => props.theme.color.fontColor};
 `;
-const DomesticStatusContainer = styled.div`
+const WorldStatusContainer = styled.div`
 display: flex;
 margin: 0 1rem;
 justify-content: space-between;
@@ -40,7 +40,7 @@ flex-direction: column;
 align-items: center;
 /* margin: 0 1rem; */
 padding: 0.5rem 1rem;
-width: 4rem;
+width: 9rem;
 height: 5rem;
 justify-content: space-between;
 cursor: default;
@@ -51,7 +51,7 @@ cursor: default;
             margin: 0;
         }
     @media ${(props) => props.theme.device.MobileLandscape}{
-        width: 3rem;
+        width: 6rem;
         height: 4rem;
         padding: 0.25rem;
     }
@@ -68,6 +68,9 @@ ${container};
 const Title = styled.div`
 
     @media ${(props) => props.theme.device.TabletPortrait}{
+        font-size: ${(props) => props.theme.fontSize.sm};
+    }
+    @media ${(props) => props.theme.device.MobileLandscape}{
         font-size: ${(props) => props.theme.fontSize.ssm};
     }
 `;
@@ -93,19 +96,20 @@ display: flex;
     }
 `;
 
-function MainLeft({koreaData, cityData}) {
+function WorldLeft({world}) {
 // 누적 확진자 : TotalCase, city_url.korea.newCase
 // 격리해제(완치) : TotalRecovered, TodayRecovered
 // 격리중(치료중) : NowCase, TotalCaseBefore
 // 사망자 수 : TotalDeath, TodayDeath
-    const names = ['확진환자', '치료중', '격리해제', '사망자'];
-
-
+    const names = ['확진환자', '격리해제', '사망자'];
+console.log(typeof(world.confirmed))
+console.log(typeof(world.recovered))
+console.log(typeof(world.deaths))
     return(
-        <MainLeftContainer>
-            <DomesticStatusTitle>국내현황</DomesticStatusTitle>
-            <DomesticStatusContainer>
-                {names.map((name, i)=>{
+        <WorldLeftContainer>
+            <WorldStatusTitle>세계 현황</WorldStatusTitle>
+            <WorldStatusContainer>
+            {names.map((name, i)=>{
                     return(
                         <TotalContainer key={i} >
                             {
@@ -114,40 +118,33 @@ function MainLeft({koreaData, cityData}) {
                             {name==='확진환자'?
                             <>
                             <Data color={'#df0736'}>
-                                {koreaData.TotalCase}
-                            </Data>                      
-                            <TodayData color={'#df0736'}><div>{cityData.korea.newCase}</div><div>{cityData.korea.newCase>0?'+':'-'}</div></TodayData>
+                                {world.confirmed.toLocaleString()}
+                            </Data>
                             </>
                             :
                             (
-                                name==='치료중'?
+                                name==='격리해제'?
                                 <>
-                                <Data color={'#0562cb'}>{koreaData.NowCase}</Data>
-                                <TodayData color={'#0562cb'}><div>{koreaData.TotalCaseBefore}</div><div>{koreaData.TotalCaseBefore>0?'+':'-'}</div></TodayData>
+                                <Data color={'#0562cb'}>
+                                    {world.recovered.toLocaleString()}
+                                </Data>
                                 </>
                                 :
-                                (
-                                    name==='격리해제'?
-                                    <>
-                                    <Data color={'#27a643'}>{koreaData.TotalRecovered}</Data>
-                                    <TodayData color={'#27a643'}><div>{koreaData.TodayRecovered}</div><div>{koreaData.TodayRecovered>0?'+':'-'}</div></TodayData>
-                                    </>
-                                    :
-                                    <>
-                                    <Data>{koreaData.TotalDeath}</Data>
-                                    <TodayData><div>{koreaData.TodayDeath}</div><div>{koreaData.TodayDeath>0?'+':'-'}</div></TodayData>
-                                    </>
-                                )
+                                <>
+                                <Data>
+                                    {world.deaths.toLocaleString()}
+                                </Data>
+
+                                </>
                             )}
                             </>}
                         </TotalContainer>
                     )
                 })}
                 
-            </DomesticStatusContainer>
-            <CityStatus cityData={cityData}></CityStatus>
-        </MainLeftContainer>
+            </WorldStatusContainer>
+        </WorldLeftContainer>
     );
 }
 
-export default MainLeft;
+export default WorldLeft;

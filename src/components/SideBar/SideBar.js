@@ -40,7 +40,7 @@ display: none;
         cursor: pointer;
     }
 `;
-function SideBar() {
+function SideBar({changeTheme, isDark}) {
     const [showModal, setShowModal] = useState(false);
 
     const openModal = () => {
@@ -53,7 +53,7 @@ function SideBar() {
         <SideBarContainer>
             <SideBarTitle></SideBarTitle>
             <SideBarContent></SideBarContent>
-            <SideBarFooter></SideBarFooter>
+            <SideBarFooter changeTheme={changeTheme} isDark={isDark}></SideBarFooter>
             <MenuIcon onClick={openModal}></MenuIcon>
             <SideBarModal showModal={showModal} closeModal={closeModal}></SideBarModal>
         </SideBarContainer>
