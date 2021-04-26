@@ -3,8 +3,7 @@ import styled, {css} from 'styled-components';
 import CityStatus from './CityStatus/CityStatus';
 
 const MainLeftContainer = styled.div`
-
-margin-right: 6rem;
+margin: 0 3rem;
 color: ${(props) => props.theme.color.fontColor};
 
 
