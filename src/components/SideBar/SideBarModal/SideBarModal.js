@@ -83,6 +83,9 @@ color: ${(props) => props.theme.color.fontColor};
 width: 2rem;
 margin-right: 0.5rem;
 `;
+const GithubLink = styled(GithubContainer.withComponent('a'))`
+`;
+
 function SideBarModal({showModal, setShowModal, closeModal}) {
 
     const onNewsClick = () => {
@@ -102,10 +105,12 @@ function SideBarModal({showModal, setShowModal, closeModal}) {
                     <DomesticStatus onClick={onDomesticClick}>국내 현황</DomesticStatus>
                     <News onClick={onNewsClick}>뉴스</News>
                     <Mode>라이트 모드</Mode>
-                    <GithubContainer>
-                        <GithubIcon></GithubIcon>
-                        <div>Github</div>
-                    </GithubContainer>
+                    <GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19" alt="githubLink">
+                        <GithubContainer>
+                            <GithubIcon></GithubIcon>
+                            <div>Github</div>
+                        </GithubContainer>
+                    </GithubLink>
                 </MenuContainer>
             </ModalContainer>
         </Background> : null}
