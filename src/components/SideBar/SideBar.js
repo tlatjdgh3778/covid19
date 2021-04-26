@@ -55,7 +55,7 @@ function SideBar({changeTheme, isDark}) {
             <SideBarContent></SideBarContent>
             <SideBarFooter changeTheme={changeTheme} isDark={isDark}></SideBarFooter>
             <MenuIcon onClick={openModal}></MenuIcon>
-            <SideBarModal showModal={showModal} closeModal={closeModal}></SideBarModal>
+            <SideBarModal showModal={showModal} closeModal={closeModal} changeTheme={changeTheme} isDark={isDark}></SideBarModal>
         </SideBarContainer>
     );
 
