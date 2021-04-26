@@ -33,7 +33,8 @@ color: ${(props) => props.theme.color.fontColor};
 width: 3rem;
 cursor: pointer;
 `;
-
+const GithubLink = styled(GithubIcon.withComponent('a'))`
+`
 function SideBarFooter({changeTheme, isDark}){
 
     const onClick = () => {
@@ -45,7 +46,9 @@ function SideBarFooter({changeTheme, isDark}){
                 <div onClick={onClick}>
                 {isDark?<LightModeIcon />:<DarkModeIcon />}
                 </div>
-            <GithubIcon />
+                <GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19">
+                    <GithubIcon />
+                </GithubLink>
         </SideBarFooterContainer>
     );
 }
