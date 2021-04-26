@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 // import Map from './components/Map/Map';
 import GlobalStyle from '../src/style/global';
 import SideBar from './components/SideBar/SideBar';
 import Main from './components/Main/Main';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, ThemeContext } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 import theme from './style/theme';
+import Loader from 'react-loader-spinner';
 
 const AppStyle = styled.div`
 display: flex;
@@ -20,6 +21,8 @@ flex-direction: column;
 // 격리중(치료중) : NowCase, TotalCaseBefore
 // 사망자 수 : TotalDeath, TodayDeath
 function App() {
+  const themeContext = useContext(ThemeContext);
+
   const [isDark, setIsDark ] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({
@@ -84,18 +87,10 @@ function App() {
     getData();
   },[]);
   
-  const LoadingContainer = styled.div`
-  background-color: white;
-  width: 100px;
-  height: 300px;
-  text-align: center;
-  top: 30rem;
-  `;
 
-const changeTheme = () => {
-  setIsDark(!isDark);
-}
-
+  const changeTheme = () => {
+    setIsDark(!isDark);
+  }
   return (
     <>
     <BrowserRouter>
@@ -104,7 +99,18 @@ const changeTheme = () => {
         <AppStyle>
             <SideBar changeTheme={changeTheme} isDark={isDark}></SideBar>
             {isLoading || !data.koreaData ? 
-            <LoadingContainer>loading...</LoadingContainer> : 
+            <Loader
+            type="Oval"
+            color='#6c757d'
+            height={50}
+            width={50}
+            timeout={3000}
+            style={{
+              position:"absolute",
+              top:"50%",
+              left:"50%",
+            }}
+            />: 
             <Main koreaData={data.koreaData} cityData={data.cityData} isDark={isDark}></Main>}
         </AppStyle>
     </ThemeProvider>
