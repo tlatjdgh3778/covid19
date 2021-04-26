@@ -22,7 +22,7 @@ const ModalContainer = styled.div`
     width: 20rem;
     height: 80%;
     padding: 16px;
-    background: rgb(25, 31, 44);
+    background: ${(props) => props.theme.color.bgColor};
     border-radius: 10px;
     text-align: center;
 
