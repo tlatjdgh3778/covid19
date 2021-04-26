@@ -86,13 +86,17 @@ margin-right: 0.5rem;
 const GithubLink = styled(GithubContainer.withComponent('a'))`
 `;
 
-function SideBarModal({showModal, setShowModal, closeModal}) {
+function SideBarModal({showModal, closeModal, changeTheme, isDark}) {
 
     const onNewsClick = () => {
         console.log("news");
     }
     const onDomesticClick = () => {
         console.log("국내");
+    }
+
+    const onClick = () => {
+        changeTheme(isDark);
     }
     return(
         <>
@@ -104,7 +108,12 @@ function SideBarModal({showModal, setShowModal, closeModal}) {
                 <MenuContainer>
                     <DomesticStatus onClick={onDomesticClick}>국내 현황</DomesticStatus>
                     <News onClick={onNewsClick}>뉴스</News>
-                    <Mode>라이트 모드</Mode>
+
+                    
+                    <div onClick={onClick}>
+                    {isDark?<Mode>라이트 모드</Mode>:<Mode>다크 모드</Mode>}
+                    </div>
+
                     <GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19" alt="githubLink">
                         <GithubContainer>
                             <GithubIcon></GithubIcon>
