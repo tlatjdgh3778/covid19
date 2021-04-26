@@ -16,8 +16,8 @@ const DomesticContainer = styled.div`
 display: flex;
 cursor: pointer;
 align-items: center;
-margin: 1rem;
-padding: 0.5rem 0;
+margin: 1rem 0;
+padding: 0.5rem 1rem;
     &:hover {
         background-color: ${(props) => props.theme.color.hoverColor};
     }
@@ -35,8 +35,8 @@ const NewsContainer = styled.div`
 display: flex;
 cursor: pointer;
 align-items: center;
-margin: 1rem;
-padding: 0.5rem 0;
+margin: 1rem 0;
+padding: 0.5rem 1rem;
     &:hover {
         background-color: ${(props) => props.theme.color.hoverColor};
     }
