@@ -50,15 +50,7 @@ padding-left: 0.5rem;
 `;
 
 function SideBarContent() {
-    const onClick = e => {
-        if(e.currentTarget.className.includes('domestic'))
-        {
-            console.log('domestic');
-        }else if(e.currentTarget.className.includes('news')){
-            console.log('news');
-        }
-    }
-    
+
     return(
         <SideBarContentContainer>
             <NavLink exact to="/">
