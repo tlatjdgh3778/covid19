@@ -5,6 +5,15 @@ import styled from 'styled-components';
 const ChartContainer = styled.div`
 
 `;
+const Title = styled.div`
+margin: 1rem;
+padding-bottom: 1rem;
+font-weight: 700;
+font-size: ${(props) => props.theme.fontSize.lg};
+`;
+const Source = styled.div`
+text-align: right;
+`;
 function Chart(){
     const [dailyData, setDailyData] = useState([]);
 
@@ -20,7 +29,6 @@ function Chart(){
                 deaths: daily.deaths.total,
                 date: daily.reportDate,
             }));
-            console.log(modData);
             setDailyData(modData);
         }
         getData();
@@ -49,9 +57,13 @@ function Chart(){
     );
 
     return(
+        <>
+        <Title>전 세계 코로나 차트</Title>
         <ChartContainer>
             {lineChart}
         </ChartContainer>
+        <Source>데이터 출처 : mathdroid</Source>
+        </>
     );
 }
 export default Chart;
