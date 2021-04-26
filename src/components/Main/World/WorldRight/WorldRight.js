@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import WorldMap from './WorldMap/WorldMap';
+import WorldStatus from './WorldStatus/WorldStatus';
 
-const WorldRightContainer = styled.div`
+const MainRightContainer = styled.div`
 color: ${(props) => props.theme.color.fontColor};
 margin: 1rem;
 min-height: 60rem;
 
+    @media ${(props) => props.theme.device.TabletLandscape}{
+        width: 90%;
+    }
     @media ${(props) => props.theme.device.TabletPortrait}{
         display: -webkit-flex;
         display: flex;
@@ -16,13 +19,27 @@ min-height: 60rem;
         /* min-width: 100%; */
     }
 `;
-function WorldRight() {
 
+function WorldRight({countriesData}) {
+    const url = 'https://disease.sh/v3/covid-19/countries';
+
+    // const getCountriesData = async () => {
+    //     const response = await fetch(url);
+
+    //     const data = await response.json();
+
+    //     console.log(data);
+    //     setCountries(data);
+    // }
+
+    // useEffect(()=>{
+    //     getCountriesData();
+    // }, [])
     return(
-        <WorldRightContainer>
-            <WorldMap></WorldMap>
-        </WorldRightContainer>
-    );
+        <MainRightContainer>
+            <WorldStatus countriesData={countriesData}></WorldStatus>
+        </MainRightContainer>
+    )
 }
 
 export default WorldRight;
