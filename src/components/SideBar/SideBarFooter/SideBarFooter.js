@@ -46,7 +46,8 @@ function SideBarFooter({changeTheme, isDark}){
                 <div onClick={onClick}>
                 {isDark?<LightModeIcon />:<DarkModeIcon />}
                 </div>
-                <GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19">
+                <GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19"
+                alt="githubLink">
                     <GithubIcon />
                 </GithubLink>
         </SideBarFooterContainer>
