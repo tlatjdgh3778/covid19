@@ -21,8 +21,9 @@ padding: 0;
     }
 }
 body {
-box-sizing: border-box;
-background-color: ${(props) => props.theme.color.wallpaperColor};
+    box-sizing: border-box;
+    background-color: ${(props) => props.theme.color.wallpaperColor};
+    transition: ease-in 0.3s;
 }
 
 a {
