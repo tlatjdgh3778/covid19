@@ -76,7 +76,6 @@ background-color: ${(props) => props.bgColor? props.theme.color.bgColor:props.th
 function WorldStatus({countriesData}) {
 
    const countries = Object.entries(countriesData);
-   console.log(countries);
     return(
         <>
         <CityContainer>나라 별 현황</CityContainer>
