@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
-// import WorldData from './WorldData/WorldData';
-// import Chart from './Chart/Chart';
+import React, { useEffect, useState, useContext } from 'react'
 import WorldLeft from './WorldLeft/WorldLeft';
+import { ThemeContext } from "styled-components";
 import WorldRight from './WorldRight/WorldRight';
+import Loader from 'react-loader-spinner';
 
 function World() {
+    const themeContext = useContext(ThemeContext);
+    const [isLoading, setIsLoading] = useState(true);
     const [world, setWorld] = useState({
         worldData:{
             confirmed:'',
@@ -33,6 +35,7 @@ function World() {
             },
             countriesData:countries_data,
         })
+        setIsLoading(false);
     }
     useEffect(()=>{
         getData();
@@ -40,8 +43,18 @@ function World() {
 
     return(
         <>
-        <WorldLeft world={world.worldData}></WorldLeft>
-        <WorldRight countriesData={world.countriesData}></WorldRight>
+        {isLoading || !world ? 
+        <Loader
+        type="Oval"
+        color={themeContext.color.fontColor}
+        height={50}
+        width={50}
+        timeout={3000}
+        />: 
+        <>
+            <WorldLeft world={world.worldData}></WorldLeft>
+            <WorldRight countriesData={world.countriesData}></WorldRight>
+        </>}
         </>
     );
 }
