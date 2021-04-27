@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Close } from '@styled-icons/evaicons-solid';
 import { Github } from '@styled-icons/boxicons-logos';
+import { NavLink } from 'react-router-dom';
 
 const Background = styled.div`
     position: fixed;
@@ -106,9 +107,12 @@ function SideBarModal({showModal, closeModal, changeTheme, isDark}) {
                 <div>메뉴</div>
                 <CloseIcon onClick={closeModal}></CloseIcon>
                 <MenuContainer>
+                <NavLink exact to="/">
                     <DomesticStatus onClick={onDomesticClick}>국내 현황</DomesticStatus>
-                    <News onClick={onNewsClick}>뉴스</News>
-
+                </NavLink>
+                <NavLink exact to="/world">
+                    <News onClick={onNewsClick}>세계 현황</News>
+                </NavLink>
                     
                     <div onClick={onClick}>
                     {isDark?<Mode>라이트 모드</Mode>:<Mode>다크 모드</Mode>}
