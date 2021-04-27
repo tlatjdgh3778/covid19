@@ -12,12 +12,11 @@ function World() {
             confirmed:'',
             deaths:'',
             recovered:'',
-            lastUpdate:'',
         },
         countriesData:'',
     });
 
-    const world_url = 'https://covid19.mathdro.id/api';
+    const world_url = 'https://disease.sh/v3/covid-19/all';
     const countries_url = 'https://disease.sh/v3/covid-19/countries';
 
     const getData = async () => {
@@ -28,10 +27,9 @@ function World() {
         const countries_data = await countries_response.json();
         setWorld({
             worldData:{
-                confirmed:data.confirmed.value,
-                deaths:data.deaths.value,
-                recovered:data.recovered.value,
-                lastUpdate:data.lastUpdate,
+                confirmed:data.cases,
+                deaths:data.deaths,
+                recovered:data.recovered,
             },
             countriesData:countries_data,
         })
