@@ -19,11 +19,14 @@ padding: 0;
     background-color: ${(props) => props.theme.color.hoverColor};
     border-radius: 10px;
     }
+    &::-webkit-scrollbar-corner {
+        background-color: ${(props) => props.theme.color.bgColor};
+    }
 }
 body {
     box-sizing: border-box;
     background-color: ${(props) => props.theme.color.wallpaperColor};
-    transition: ease-in 0.3s;
+    transition: all 0.5s;
 }
 
 a {
