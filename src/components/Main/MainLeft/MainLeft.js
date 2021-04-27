@@ -44,8 +44,6 @@ height: 5rem;
 justify-content: space-between;
 cursor: default;
 
-
-
     @media ${(props) => props.theme.device.TabletPortrait}{
             margin: 0;
         }
@@ -54,14 +52,15 @@ cursor: default;
         height: 4rem;
         padding: 0.25rem;
     }
-        
+
 `;
 
 const TotalContainer = styled.div`
 ${container};
     &:hover{
-        background-color: ${(props) => props.theme.color.bgColor};
-    }
+            background-color: ${(props) => props.theme.color.hoverColor};
+        }
+        
 `;
 
 const Title = styled.div`
@@ -97,6 +96,7 @@ function MainLeft({koreaData, cityData}) {
 // 격리해제(완치) : TotalRecovered, TodayRecovered
 // 격리중(치료중) : NowCase, TotalCaseBefore
 // 사망자 수 : TotalDeath, TodayDeath
+
     const names = ['확진환자', '치료중', '격리해제', '사망자'];
 
 
@@ -106,35 +106,41 @@ function MainLeft({koreaData, cityData}) {
             <DomesticStatusContainer>
                 {names.map((name, i)=>{
                     return(
-                        <TotalContainer key={i} >
+                        <TotalContainer key={i}>
                             {
                             <>
                             <Title>{name}</Title>
                             {name==='확진환자'?
                             <>
-                            <Data color={'#df0736'}>
+                            <Data color={(props) => props.theme.color.fontRed}>
                                 {koreaData.TotalCase}
                             </Data>                      
-                            <TodayData color={'#df0736'}><div>{cityData.korea.newCase}</div><div>{cityData.korea.newCase>0?'+':'-'}</div></TodayData>
+                            <TodayData color={(props) => props.theme.color.fontRed}><div>{cityData.korea.newCase>0?'+':''}</div><div>{cityData.korea.newCase}</div></TodayData>
                             </>
                             :
                             (
                                 name==='치료중'?
                                 <>
-                                <Data color={'#0562cb'}>{koreaData.NowCase}</Data>
-                                <TodayData color={'#0562cb'}><div>{koreaData.TotalCaseBefore}</div><div>{koreaData.TotalCaseBefore>0?'+':'-'}</div></TodayData>
+                                <Data color={(props) => props.theme.color.fontBlue}>
+                                    {koreaData.NowCase}
+                                </Data>
+                                <TodayData color={(props) => props.theme.color.fontBlue}><div>{koreaData.TotalCaseBefore>0?'+':''}</div><div>{koreaData.TotalCaseBefore}</div></TodayData>
                                 </>
                                 :
                                 (
                                     name==='격리해제'?
                                     <>
-                                    <Data color={'#27a643'}>{koreaData.TotalRecovered}</Data>
-                                    <TodayData color={'#27a643'}><div>{koreaData.TodayRecovered}</div><div>{koreaData.TodayRecovered>0?'+':'-'}</div></TodayData>
+                                    <Data color={(props) => props.theme.color.fontGreen}>
+                                        {koreaData.TotalRecovered}
+                                    </Data>
+                                    <TodayData color={(props) => props.theme.color.fontGreen}><div>{koreaData.TodayRecovered>0?'+':''}</div><div>{koreaData.TodayRecovered}</div></TodayData>
                                     </>
                                     :
                                     <>
-                                    <Data>{koreaData.TotalDeath}</Data>
-                                    <TodayData><div>{koreaData.TodayDeath}</div><div>{koreaData.TodayDeath>0?'+':'-'}</div></TodayData>
+                                    <Data>
+                                        {koreaData.TotalDeath}
+                                    </Data>
+                                    <TodayData><div>{koreaData.TodayDeath>0?'+':''}</div><div>{koreaData.TodayDeath}</div></TodayData>
                                     </>
                                 )
                             )}
