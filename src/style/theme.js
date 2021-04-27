@@ -32,9 +32,10 @@ const lightMode = {
 
         highlightColor: '#c2b7da',
         hoverColor: '#f5f5f5',
-        hoverRed: '#331327',
-        hoverBlue: '#132240',
-        hoverGreen: '#182828',
+        
+        chartRed: '#ffe1e6',
+        chartGreen: '#e4f4e7',
+        chartColor: '#f6f6f7',
 
         iconColor: '#373737',
     },
@@ -52,10 +53,10 @@ const darkMode = {
 
         highlightColor: '#2c1952',
         hoverColor: '#152338',
-        hoverRed: '#331327',
-        hoverBlue: '#132240',
-        hoverGreen: '#182828',
-        
+        chartRed: '#311325',
+        chartGreen: '#162626',
+        chartColor: '#191928',
+
         iconColor: '#ffc107',
     },
     fontSize,
