@@ -4,7 +4,7 @@ import WorldStatus from './WorldStatus/WorldStatus';
 
 const MainRightContainer = styled.div`
 color: ${(props) => props.theme.color.fontColor};
-margin: 1rem;
+margin: 0 1rem;
 min-height: 60rem;
 
     @media ${(props) => props.theme.device.TabletLandscape}{
@@ -21,20 +21,7 @@ min-height: 60rem;
 `;
 
 function WorldRight({countriesData}) {
-    const url = 'https://disease.sh/v3/covid-19/countries';
 
-    // const getCountriesData = async () => {
-    //     const response = await fetch(url);
-
-    //     const data = await response.json();
-
-    //     console.log(data);
-    //     setCountries(data);
-    // }
-
-    // useEffect(()=>{
-    //     getCountriesData();
-    // }, [])
     return(
         <MainRightContainer>
             <WorldStatus countriesData={countriesData}></WorldStatus>
