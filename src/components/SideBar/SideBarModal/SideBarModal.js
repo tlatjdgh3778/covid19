@@ -108,10 +108,10 @@ function SideBarModal({showModal, closeModal, changeTheme, isDark}) {
                 <CloseIcon onClick={closeModal}></CloseIcon>
                 <MenuContainer>
                 <NavLink exact to="/">
-                    <DomesticStatus onClick={onDomesticClick}>국내 현황</DomesticStatus>
+                    <DomesticStatus onClick={closeModal}>국내 현황</DomesticStatus>
                 </NavLink>
                 <NavLink exact to="/world">
-                    <News onClick={onNewsClick}>세계 현황</News>
+                    <News onClick={closeModal}>세계 현황</News>
                 </NavLink>
                     
                     <div onClick={onClick}>
