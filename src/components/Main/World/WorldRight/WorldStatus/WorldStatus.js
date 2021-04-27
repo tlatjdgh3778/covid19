@@ -12,7 +12,7 @@ margin: 0 1rem;
 display: flex;
 flex-direction: column;
 overflow: auto;
-max-height: 100vh;
+max-height: 110vh;
 `;
 const TitleContainer = styled.div`
 display: flex;
