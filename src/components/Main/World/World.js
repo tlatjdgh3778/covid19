@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react';
 import WorldLeft from './WorldLeft/WorldLeft';
 import { ThemeContext } from "styled-components";
 import WorldRight from './WorldRight/WorldRight';
