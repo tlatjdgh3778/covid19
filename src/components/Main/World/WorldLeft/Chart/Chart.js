@@ -1,12 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import numeral from 'numeral';
 
+const ChartStyle = css`
+border-radius: 10px;
+margin: 1rem 0;
+padding: 0.5rem 0;
+`;
+const ChartTitle = css`
+margin: 0.5rem;
+font-weight: 700;
+text-align: center;
+`;
+
 const options = {
-    // legend: {
-    //     display: false,
-    // },
+    plugins: {
+        title: {
+            display: true,
+            text: 'Custom Chart Title'
+        }
+    },
+    legend: {
+        // labels: {
+        //     fontSize: 16,
+        //     fontWeight: 900,
+        // }
+        display: false,
+    },
     elements: {
         point: {
             radius: 0,
@@ -41,20 +62,30 @@ const options = {
     },
 }
 const CasesChartContainer = styled.div`
-border-radius: 10px;
-margin: 1rem 0;
+${ChartStyle};
 background-color: ${(props) => props.theme.color.chartRed};
 `;
 const RecoveredChartContainer = styled.div`
-border-radius: 10px;
-margin: 1rem 0;
+${ChartStyle};
 background-color: ${(props) => props.theme.color.chartGreen};
 `;
 const DeathsChartContainer = styled.div`
-border-radius: 10px;
-margin: 1rem 0;
+${ChartStyle};
 background-color: ${(props) => props.theme.color.chartColor};
 `;
+const CasesTitle = styled.div`
+${ChartTitle}
+color: ${(props) => props.theme.color.fontRed};
+`;
+const RecoveredTitle = styled.div`
+${ChartTitle}
+color: ${(props) => props.theme.color.fontGreen};
+`;
+const DeathsTitle = styled.div`
+${ChartTitle}
+color: ${(props) => props.theme.color.fontColor};
+`;
+
 const Title = styled.div`
 margin: 1rem;
 padding-bottom: 1rem;
@@ -105,7 +136,7 @@ function Chart(){
         labels: dateLabels,
         datasets: [
           {
-            label: "회복자 수",
+            label: "완치자 수",
             data: recoveredData,
             fill: false,
             borderColor: "#27a643",
@@ -127,12 +158,15 @@ function Chart(){
         <>
         <Title>전 세계 코로나 차트</Title>
         <CasesChartContainer>
+            <CasesTitle>확진자 수</CasesTitle>
             <Line data={casesChart} options={options}></Line>
         </CasesChartContainer>
         <RecoveredChartContainer>
+            <RecoveredTitle>완치자 수</RecoveredTitle>
             <Line data={recoveredChart} options={options}></Line>
         </RecoveredChartContainer>
         <DeathsChartContainer>
+            <DeathsTitle>사망자 수</DeathsTitle>
             <Line data={deathsChart} options={options}></Line>
         </DeathsChartContainer>
         </>
