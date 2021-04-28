@@ -59,27 +59,27 @@ function App() {
       const korea_data = await korea_response.json();
   
       const city_response = await fetch(city_url);
-      const data = await city_response.json();
+      const city_data = await city_response.json();
   
       setData({koreaData: korea_data, cityData:{
-        seoul:data.seoul,
-        incheon:data.incheon,
-        gyeonggi:data.gyeonggi,
-        gangwon:data.gangwon,
-        chungbuk:data.chungbuk,
-        chungnam:data.chungnam,
-        daejeon:data.daejeon,
-        sejong:data.sejong,
-        jeonbuk:data.jeonbuk,
-        jeonnam:data.jeonnam,
-        gwangju:data.gwangju,
-        gyeongbuk:data.gyeongbuk,
-        daegu:data.daegu,
-        ulsan:data.ulsan,
-        gyeongnam:data.gyeongnam,
-        busan:data.busan,
-        jeju:data.jeju,
-        korea:data.korea,
+        seoul:city_data.seoul,
+        incheon:city_data.incheon,
+        gyeonggi:city_data.gyeonggi,
+        gangwon:city_data.gangwon,
+        chungbuk:city_data.chungbuk,
+        chungnam:city_data.chungnam,
+        daejeon:city_data.daejeon,
+        sejong:city_data.sejong,
+        jeonbuk:city_data.jeonbuk,
+        jeonnam:city_data.jeonnam,
+        gwangju:city_data.gwangju,
+        gyeongbuk:city_data.gyeongbuk,
+        daegu:city_data.daegu,
+        ulsan:city_data.ulsan,
+        gyeongnam:city_data.gyeongnam,
+        busan:city_data.busan,
+        jeju:city_data.jeju,
+        korea:city_data.korea,
       }})
       setIsLoading(false);
     }
