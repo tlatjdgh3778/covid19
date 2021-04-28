@@ -112,28 +112,28 @@ function MainLeft({koreaData, cityData}) {
                             <Title>{name}</Title>
                             {name==='확진환자'?
                             <>
-                            <Data color={(props) => props.theme.color.fontRed}>
+                            <Data color={'#df0736'}>
                                 {koreaData.TotalCase}
                             </Data>                      
-                            <TodayData color={(props) => props.theme.color.fontRed}><div>{cityData.korea.newCase>0?'+':''}</div><div>{cityData.korea.newCase}</div></TodayData>
+                            <TodayData color={'#df0736'}><div>{cityData.korea.newCase>0?'+':''}</div><div>{cityData.korea.newCase}</div></TodayData>
                             </>
                             :
                             (
                                 name==='치료중'?
                                 <>
-                                <Data color={(props) => props.theme.color.fontBlue}>
+                                <Data color={'#0562cb'}>
                                     {koreaData.NowCase}
                                 </Data>
-                                <TodayData color={(props) => props.theme.color.fontBlue}><div>{koreaData.TotalCaseBefore>0?'+':''}</div><div>{koreaData.TotalCaseBefore}</div></TodayData>
+                                <TodayData color={'#0562cb'}><div>{koreaData.TotalCaseBefore>0?'+':''}</div><div>{koreaData.TotalCaseBefore}</div></TodayData>
                                 </>
                                 :
                                 (
                                     name==='격리해제'?
                                     <>
-                                    <Data color={(props) => props.theme.color.fontGreen}>
+                                    <Data color={'##27a643'}>
                                         {koreaData.TotalRecovered}
                                     </Data>
-                                    <TodayData color={(props) => props.theme.color.fontGreen}><div>{koreaData.TodayRecovered>0?'+':''}</div><div>{koreaData.TodayRecovered}</div></TodayData>
+                                    <TodayData color={'##27a643'}><div>{koreaData.TodayRecovered>0?'+':''}</div><div>{koreaData.TodayRecovered}</div></TodayData>
                                     </>
                                     :
                                     <>
