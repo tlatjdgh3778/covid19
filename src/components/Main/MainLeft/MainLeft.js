@@ -130,10 +130,10 @@ function MainLeft({koreaData, cityData}) {
                                 (
                                     name==='격리해제'?
                                     <>
-                                    <Data color={'##27a643'}>
+                                    <Data color={'#27a643'}>
                                         {koreaData.TotalRecovered}
                                     </Data>
-                                    <TodayData color={'##27a643'}><div>{koreaData.TodayRecovered>0?'+':''}</div><div>{koreaData.TodayRecovered}</div></TodayData>
+                                    <TodayData color={'#27a643'}><div>{koreaData.TodayRecovered>0?'+':''}</div><div>{koreaData.TodayRecovered}</div></TodayData>
                                     </>
                                     :
                                     <>
