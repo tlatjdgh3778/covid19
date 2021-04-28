@@ -89,13 +89,6 @@ const GithubLink = styled(GithubContainer.withComponent('a'))`
 
 function SideBarModal({showModal, closeModal, changeTheme, isDark}) {
 
-    const onNewsClick = () => {
-        console.log("news");
-    }
-    const onDomesticClick = () => {
-        console.log("국내");
-    }
-
     const onClick = () => {
         changeTheme(isDark);
     }
