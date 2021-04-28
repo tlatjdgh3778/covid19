@@ -37,7 +37,12 @@ font-size: ${(props) => props.theme.fontSize.lg};
 `;
 const CityCaseStatus = styled.div`
 `;
-
+const UpdateTime = styled.div`
+margin-left: 1rem;
+margin-right: 1rem;
+margin-bottom: 0.5rem;
+font-size: ${(props) => props.theme.fontSize.ssm};
+`;
 function Map({koreaData, cityData, isDark}) {
     const [name, setName] = useState({
         name:'서울',
@@ -104,6 +109,8 @@ function Map({koreaData, cityData, isDark}) {
                     case 'jeju':
                         setName({name: '제주', case: cityData.jeju.newCase, totalCase: cityData.jeju.totalCase});
                         break;
+                    default:
+                        break;
                 }
             },
             mouseover: e => {
@@ -115,12 +122,7 @@ function Map({koreaData, cityData, isDark}) {
             },
         });
 }
-const UpdateTime = styled.div`
-margin-left: 1rem;
-margin-right: 1rem;
-margin-bottom: 0.5rem;
-font-size: ${(props) => props.theme.fontSize.ssm};
-`;
+
 const newCase = parseInt(name.case.replace(/,/g , ''))
 const newTotalCase = parseInt(name.totalCase.replace(/,/g , ''))
     return(
