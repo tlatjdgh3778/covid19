@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 // import Map from './components/Map/Map';
 import GlobalStyle from '../src/style/global';
 import SideBar from './components/SideBar/SideBar';
 import Main from './components/Main/Main';
-import styled, { ThemeProvider, ThemeContext } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 import theme from './style/theme';
 import Loader from 'react-loader-spinner';
@@ -21,9 +21,8 @@ flex-direction: column;
 // 격리중(치료중) : NowCase, TotalCaseBefore
 // 사망자 수 : TotalDeath, TodayDeath
 function App() {
-  const themeContext = useContext(ThemeContext);
 
-  const [isDark, setIsDark ] = useState(true);
+  const [isDark, setIsDark ] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({
     koreaData:"",
@@ -53,37 +52,37 @@ function App() {
   const korea_url = `https://ajax-api.corona-19.kr/?dir=korea&serviceKey=${API_KEY}`;
   const city_url = `https://ajax-api.corona-19.kr/?dir=country&serviceKey=${API_KEY}`;
 
-  const getData = async () => {
-    const korea_response = await fetch(korea_url);
-    const korea_data = await korea_response.json();
-
-    const city_response = await fetch(city_url);
-    const data = await city_response.json();
-
-    setData({koreaData: korea_data, cityData:{
-      seoul:data.seoul,
-      incheon:data.incheon,
-      gyeonggi:data.gyeonggi,
-      gangwon:data.gangwon,
-      chungbuk:data.chungbuk,
-      chungnam:data.chungnam,
-      daejeon:data.daejeon,
-      sejong:data.sejong,
-      jeonbuk:data.jeonbuk,
-      jeonnam:data.jeonnam,
-      gwangju:data.gwangju,
-      gyeongbuk:data.gyeongbuk,
-      daegu:data.daegu,
-      ulsan:data.ulsan,
-      gyeongnam:data.gyeongnam,
-      busan:data.busan,
-      jeju:data.jeju,
-      korea:data.korea,
-    }})
-    setIsLoading(false);
-    
-  }
+  
   useEffect(()=>{
+    const getData = async () => {
+      const korea_response = await fetch(korea_url);
+      const korea_data = await korea_response.json();
+  
+      const city_response = await fetch(city_url);
+      const data = await city_response.json();
+  
+      setData({koreaData: korea_data, cityData:{
+        seoul:data.seoul,
+        incheon:data.incheon,
+        gyeonggi:data.gyeonggi,
+        gangwon:data.gangwon,
+        chungbuk:data.chungbuk,
+        chungnam:data.chungnam,
+        daejeon:data.daejeon,
+        sejong:data.sejong,
+        jeonbuk:data.jeonbuk,
+        jeonnam:data.jeonnam,
+        gwangju:data.gwangju,
+        gyeongbuk:data.gyeongbuk,
+        daegu:data.daegu,
+        ulsan:data.ulsan,
+        gyeongnam:data.gyeongnam,
+        busan:data.busan,
+        jeju:data.jeju,
+        korea:data.korea,
+      }})
+      setIsLoading(false);
+    }
     getData();
   },[]);
   
