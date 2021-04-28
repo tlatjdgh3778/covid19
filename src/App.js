@@ -51,7 +51,8 @@ function App() {
 
   const korea_url = `https://ajax-api.corona-19.kr/?dir=korea&serviceKey=${API_KEY}`;
   const city_url = `https://ajax-api.corona-19.kr/?dir=country&serviceKey=${API_KEY}`;
-
+  // https://api.corona-19.kr/korea/?serviceKey=APIKey
+  // https://api.corona-19.kr/korea/country/new/?serviceKey=APIKey
   
   useEffect(()=>{
     const getData = async () => {
@@ -60,7 +61,12 @@ function App() {
   
       const city_response = await fetch(city_url);
       const city_data = await city_response.json();
-  
+      console.log(korea_response);
+      console.log(city_response);
+      console.log(korea_data);
+      console.log(city_data);
+      
+      // console.log(city_data);
       setData({koreaData: korea_data, cityData:{
         seoul:city_data.seoul,
         incheon:city_data.incheon,
