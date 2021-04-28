@@ -53,7 +53,7 @@ function SideBarContent() {
 
     return(
         <SideBarContentContainer>
-            <NavLink exact to="/COVID19/">
+            <NavLink exact to="/">
                 <DomesticContainer>
                     <HomeIcon/>
                     <DomesticStatus>
@@ -61,7 +61,7 @@ function SideBarContent() {
                     </DomesticStatus>
                 </DomesticContainer>   
             </NavLink>
-            <NavLink to="/COVID19/world">
+            <NavLink to="/world">
                 <NewsContainer> 
                     <NewsIcon/>
                     <NewsContent>세계 현황</NewsContent>

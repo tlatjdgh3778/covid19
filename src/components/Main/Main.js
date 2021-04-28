@@ -32,13 +32,13 @@ const MainContainer = styled.div`
 function Main({koreaData, cityData, isDark}) {
     return(
         <Switch>
-            <Route exact path="/COVID19/">
+            <Route exact path="/">
                 <MainContainer>
                     <MainLeft koreaData={koreaData} cityData={cityData}></MainLeft>
                     <MainRight koreaData={koreaData} cityData={cityData} isDark={isDark}></MainRight>
                 </MainContainer>
             </Route>
-            <Route exact path="/COVID19/world">
+            <Route exact path="/world">
                 <MainContainer>
                     <World></World>
                 </MainContainer>
