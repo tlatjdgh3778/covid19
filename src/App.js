@@ -61,10 +61,6 @@ function App() {
   
       const city_response = await fetch(city_url);
       const city_data = await city_response.json();
-      console.log(korea_response);
-      console.log(city_response);
-      console.log(korea_data);
-      console.log(city_data);
       
       // console.log(city_data);
       setData({koreaData: korea_data, cityData:{
@@ -98,7 +94,7 @@ function App() {
   }
   return (
     <>
-    <BrowserRouter>
+    <BrowserRouter basename="/covid19">
     <ThemeProvider theme={isDark? theme.darkMode : theme.lightMode}>
       <GlobalStyle/>
         <AppStyle>
