@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import MainLeft from './MainLeft/MainLeft';
 import MainRight from './MainRight/MainRight';
 import World from './World/World';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 const MainContainer = styled.div`
     display: flex;
@@ -45,7 +45,6 @@ function Main({koreaData, cityData, isDark}) {
             </Route>
         </Switch>
     );
-
 }
 
 export default Main;
