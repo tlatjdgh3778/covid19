@@ -84,7 +84,7 @@ function App() {
       setIsLoading(false);
     }
     getData();
-  },[]);
+  },[city_url, korea_url]);
   
 
   const changeTheme = () => {
