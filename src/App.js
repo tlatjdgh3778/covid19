@@ -4,7 +4,7 @@ import GlobalStyle from '../src/style/global';
 import SideBar from './components/SideBar/SideBar';
 import Main from './components/Main/Main';
 import styled, { ThemeProvider } from 'styled-components';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import theme from './style/theme';
 import Loader from 'react-loader-spinner';
 
@@ -94,7 +94,7 @@ function App() {
   }
   return (
     <>
-    <BrowserRouter basename="/covid19">
+    <HashRouter>
     <ThemeProvider theme={isDark? theme.darkMode : theme.lightMode}>
       <GlobalStyle/>
         <AppStyle>
@@ -115,7 +115,7 @@ function App() {
             <Main koreaData={data.koreaData} cityData={data.cityData} isDark={isDark}></Main>}
         </AppStyle>
     </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
     </>
   );
 }
