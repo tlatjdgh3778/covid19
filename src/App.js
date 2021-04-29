@@ -4,7 +4,7 @@ import GlobalStyle from '../src/style/global';
 import SideBar from './components/SideBar/SideBar';
 import Main from './components/Main/Main';
 import styled, { ThemeProvider } from 'styled-components';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import theme from './style/theme';
 import Loader from 'react-loader-spinner';
 
@@ -94,7 +94,7 @@ function App() {
   }
   return (
     <>
-    <Router>
+    <Router basename="/covid19">
     <ThemeProvider theme={isDark? theme.darkMode : theme.lightMode}>
       <GlobalStyle/>
         <AppStyle>
