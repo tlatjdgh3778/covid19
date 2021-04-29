@@ -55,7 +55,7 @@ function Map({koreaData, cityData, isDark}) {
 
         layer.on({
             click: e => {
-
+                e.target.setStyle({fillColor: '#656f7d'});
                 e.target.setStyle({fillColor: 'red'});
                 switch(cityName){
                     case 'seoul':
