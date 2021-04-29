@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Home, News } from '@styled-icons/boxicons-regular'
+import { Home, World } from '@styled-icons/boxicons-regular';
 import { NavLink } from 'react-router-dom';
 
 const SideBarContentContainer = styled.div`
@@ -43,7 +43,7 @@ padding: 0.5rem 1rem;
 `;
 const NewsContent = styled.div`
 `;
-const NewsIcon = styled(News)`
+const NewsIcon = styled(World)`
 margin-right: 0.5rem;
 width: 2rem;
 padding-left: 0.5rem;
