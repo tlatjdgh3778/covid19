@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Close } from '@styled-icons/evaicons-solid';
 import { Github } from '@styled-icons/boxicons-logos';
-import { NavLink } from 'react-router-dom';
 
 const Background = styled.div`
     position: fixed;
@@ -39,6 +37,7 @@ width: 100%;
 height: 80%;
 padding-top: 3rem;
 `;
+
 const CloseIcon = styled(Close)`
 position: absolute;
 top: 0.5rem;
@@ -83,45 +82,9 @@ const GithubIcon = styled(Github)`
 color: ${(props) => props.theme.color.fontColor};
 width: 2rem;
 margin-right: 0.5rem;
+
 `;
 const GithubLink = styled(GithubContainer.withComponent('a'))`
 `;
 
-function SideBarModal({showModal, closeModal, changeTheme, isDark}) {
-
-    const onClick = () => {
-        changeTheme(isDark);
-    }
-    return(
-        <>
-        {showModal ? 
-        <Background onClick={closeModal}>
-            <ModalContainer onClick={e => e.stopPropagation()}>
-                <div>메뉴</div>
-                <CloseIcon onClick={closeModal}></CloseIcon>
-                <MenuContainer>
-                <NavLink exact to="/">
-                    <DomesticStatus onClick={closeModal}>국내 현황</DomesticStatus>
-                </NavLink>
-                <NavLink exact to="/world">
-                    <News onClick={closeModal}>세계 현황</News>
-                </NavLink>
-                    
-                    <div onClick={onClick}>
-                    {isDark?<Mode>라이트 모드</Mode>:<Mode>다크 모드</Mode>}
-                    </div>
-
-                    <GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19" alt="githubLink">
-                        <GithubContainer>
-                            <GithubIcon></GithubIcon>
-                            <div>Github</div>
-                        </GithubContainer>
-                    </GithubLink>
-                </MenuContainer>
-            </ModalContainer>
-        </Background> : null}
-        </>
-    );
-}
-
-export default SideBarModal;
+export { Background, ModalContainer, MenuContainer, CloseIcon, DomesticStatus, News, Mode, GithubContainer, GithubIcon, GithubLink };

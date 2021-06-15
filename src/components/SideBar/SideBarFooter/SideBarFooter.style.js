@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Github } from '@styled-icons/boxicons-logos';
 import { DarkMode, LightMode } from '@styled-icons/material-outlined';
@@ -35,23 +34,5 @@ cursor: pointer;
 `;
 const GithubLink = styled(GithubIcon.withComponent('a'))`
 `
-function SideBarFooter({changeTheme, isDark}){
 
-    const onClick = () => {
-        changeTheme(isDark);
-    }
-
-    return(
-        <SideBarFooterContainer>
-                <div onClick={onClick}>
-                {isDark?<LightModeIcon />:<DarkModeIcon />}
-                </div>
-                <GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19"
-                alt="githubLink">
-                    <GithubIcon />
-                </GithubLink>
-        </SideBarFooterContainer>
-    );
-}
-
-export default SideBarFooter;
+export { SideBarFooterContainer, LightModeIcon, DarkModeIcon, GithubIcon, GithubLink };

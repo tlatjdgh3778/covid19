@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import WorldStatus from './WorldStatus/WorldStatus';
 
 const MainRightContainer = styled.div`
 color: ${(props) => props.theme.color.fontColor};
@@ -20,13 +18,4 @@ min-height: 60rem;
     }
 `;
 
-function WorldRight({countriesData}) {
-
-    return(
-        <MainRightContainer>
-            <WorldStatus countriesData={countriesData}></WorldStatus>
-        </MainRightContainer>
-    )
-}
-
-export default WorldRight;
+export { MainRightContainer };

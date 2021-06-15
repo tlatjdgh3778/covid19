@@ -1,12 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
-import WorldData from './WorldData/WorldData';
-import Chart from './Chart/Chart';
 
 const MainLeftContainer = styled.div`
 margin: 0 3rem;
 color: ${(props) => props.theme.color.fontColor};
-
 
     @media ${(props) => props.theme.device.TabletLandscape}{
         margin: 1rem;
@@ -21,14 +17,4 @@ color: ${(props) => props.theme.color.fontColor};
     }
 `;
 
-function WorldLeft({world}) {
-
-    return(
-        <MainLeftContainer>
-            <WorldData world={world}></WorldData>
-            <Chart></Chart>
-        </MainLeftContainer>
-    );
-}
-
-export default WorldLeft;
+export { MainLeftContainer };

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, {css} from 'styled-components';
 
 const WorldDataContainer = styled.div`
@@ -69,44 +68,5 @@ color: ${(props) => props.color || props.theme.color.fontColor};
         font-size: ${(props) => props.theme.fontSize.ssm};
     }
 `;
-function WorldData({world}) {
-    const names = ['확진환자', '격리해제', '사망자'];
 
-    return(
-        <WorldDataContainer>
-            <DomesticStatusTitle>세계현황</DomesticStatusTitle>
-            <DomesticStatusContainer>
-                {names.map((name, i)=>{
-                    return(
-                        <TotalContainer key={i} >
-                            {
-                            <>
-                            <Title>{name}</Title>
-                                {name==='확진환자'?
-                                <>
-                                <Data color={'#df0736'}>
-                                    {world.confirmed.toLocaleString()}
-                                </Data>                      
-                                </>
-                                :
-                                (
-                                name==='격리해제'?
-                                <>
-                                <Data color={'#27a643'}>{world.recovered.toLocaleString()}</Data>
-                                </>
-                                :
-                                <>
-                                <Data>{world.deaths.toLocaleString()}</Data>
-                                </>
-                                )}
-                            </>
-                            }
-                        </TotalContainer>
-                    )
-                })}
-            </DomesticStatusContainer>
-        </WorldDataContainer>
-    );
-}
-
-export default WorldData;
+export { WorldDataContainer, DomesticStatusTitle, DomesticStatusContainer, container, TotalContainer, Title, Data };

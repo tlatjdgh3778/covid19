@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import Map from './Map/Map';
 
 const MainRightContainer = styled.div`
 color: ${(props) => props.theme.color.fontColor};
@@ -16,13 +14,5 @@ min-height: 60rem;
         /* min-width: 100%; */
     }
 `;
-function MainRight({koreaData, cityData, isDark}) {
 
-    return(
-        <MainRightContainer>
-            <Map koreaData={koreaData} cityData={cityData} isDark={isDark}></Map>
-        </MainRightContainer>
-    );
-}
-
-export default MainRight;
+export { MainRightContainer };

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const SideBarTitleContainer = styled.div`
@@ -17,14 +16,4 @@ const Title = styled.div`
     }
 `;
 
-function SideBarTitle() {
-    return(
-        <>
-        <SideBarTitleContainer>
-            <Title>COVID 19 </Title>
-            <Title>TRACKER</Title>
-        </SideBarTitleContainer>
-        </>
-    );
-}
-export default SideBarTitle;
+export { SideBarTitleContainer, Title };

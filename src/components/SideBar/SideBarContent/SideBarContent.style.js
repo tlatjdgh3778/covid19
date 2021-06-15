@@ -1,7 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Home, World } from '@styled-icons/boxicons-regular';
-import { NavLink } from 'react-router-dom';
 
 const SideBarContentContainer = styled.div`
 text-align: center;
@@ -31,7 +29,7 @@ width: 2rem;
 padding-left: 0.5rem;
 `;
 
-const NewsContainer = styled.div`
+const WorldContainer = styled.div`
 display: flex;
 cursor: pointer;
 align-items: center;
@@ -41,34 +39,12 @@ padding: 0.5rem 1rem;
         background-color: ${(props) => props.theme.color.hoverColor};
     }
 `;
-const NewsContent = styled.div`
+const WorldStatus = styled.div`
 `;
-const NewsIcon = styled(World)`
+const WorldIcon = styled(World)`
 margin-right: 0.5rem;
 width: 2rem;
 padding-left: 0.5rem;
 `;
 
-function SideBarContent() {
-
-    return(
-        <SideBarContentContainer>
-            <NavLink exact to="/">
-                <DomesticContainer>
-                    <HomeIcon/>
-                    <DomesticStatus>
-                    국내 현황
-                    </DomesticStatus>
-                </DomesticContainer>   
-            </NavLink>
-            <NavLink to="/world">
-                <NewsContainer> 
-                    <NewsIcon/>
-                    <NewsContent>세계 현황</NewsContent>
-                </NewsContainer>    
-            </NavLink>
-        </SideBarContentContainer>
-    );
-}
-
-export default SideBarContent;
+export { SideBarContentContainer, DomesticContainer, DomesticStatus, HomeIcon, WorldContainer, WorldStatus,WorldIcon };
