@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapContainer, GeoJSON } from 'react-leaflet';
+import { GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import mapData from '../../../../data/cities.json';
 import CountUp from 'react-countup';

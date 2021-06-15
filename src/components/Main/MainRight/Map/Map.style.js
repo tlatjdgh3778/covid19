@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MapContainer } from 'react-leaflet';
 
 const MapContainerCustom = styled(MapContainer)`
     width: 35rem;
