@@ -1,6 +1,6 @@
 import React from 'react';
 import CityStatus from './CityStatus/CityStatus';
-import * as S from './CityStatus';
+import * as S from './MainLeft.style';
 
 function MainLeft({koreaData, cityData}) {
 // 누적 확진자 : TotalCase, city_url.korea.newCase
@@ -59,7 +59,7 @@ function MainLeft({koreaData, cityData}) {
                 })}
                 
             </S.DomesticStatusContainer>
-            <S.CityStatus cityData={cityData}></S.CityStatus>
+            <CityStatus cityData={cityData}></CityStatus>
         </S.MainLeftContainer>
     );
 }
