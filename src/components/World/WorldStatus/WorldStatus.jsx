@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from './WorldData.style';
+import * as S from './WorldStatus.style';
 
-function WorldData({world}) {
+const WorldStatus = ({ worldData }) => {
     const names = ['확진환자', '격리해제', '사망자'];
 
     return(
@@ -17,18 +17,18 @@ function WorldData({world}) {
                                 {name==='확진환자'?
                                 <>
                                 <S.Data color={'#df0736'}>
-                                    {world.confirmed.toLocaleString()}
+                                    {worldData.confirmed.toLocaleString()}
                                 </S.Data>                      
                                 </>
                                 :
                                 (
                                 name==='격리해제'?
                                 <>
-                                <S.Data color={'#27a643'}>{world.recovered.toLocaleString()}</S.Data>
+                                <S.Data color={'#27a643'}>{worldData.recovered.toLocaleString()}</S.Data>
                                 </>
                                 :
                                 <>
-                                <S.Data>{world.deaths.toLocaleString()}</S.Data>
+                                <S.Data>{worldData.deaths.toLocaleString()}</S.Data>
                                 </>
                                 )}
                             </>
@@ -41,4 +41,4 @@ function WorldData({world}) {
     );
 }
 
-export default WorldData;
+export default WorldStatus;

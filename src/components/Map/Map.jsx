@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import mapData from '../../../../data/cities.json';
+import mapData from 'data/cities.json';
 import CountUp from 'react-countup';
 import * as S from './Map.style';
 
@@ -89,36 +89,36 @@ const newCase = parseInt(name.case.replace(/,/g , ''))
 const newTotalCase = parseInt(name.totalCase.replace(/,/g , ''))
     return(
         <>
-        <S.UpdateTime>{koreaData.updateTime}</S.UpdateTime>
-        <S.CityName>{name.name}</S.CityName>
-        <S.CityCaseContainer>
-            <S.CityCase>
-                <CountUp
-                start={0}
-                end={newCase}
-                duration={1.5}
-                separator=",">
-                </CountUp>
-            </S.CityCase>
-            <S.CityCaseStatus>당일 확진자</S.CityCaseStatus>
-        </S.CityCaseContainer>
-        <S.CityCaseContainer>
-            <S.CityCase>
-                <CountUp
-                start={0}
-                end={newTotalCase}
-                duration={1.5}
-                separator=",">
-                </CountUp>
-            </S.CityCase>
-            <S.CityCaseStatus>누적 확진자</S.CityCaseStatus>
-        </S.CityCaseContainer>
-        <S.MapContainerCustom
-        zoom={6.5}
-        center={[36, 128]}>
-            <GeoJSON style={S.cityStyle} data={mapData.features}
-            onEachFeature={onEachCity} />
-        </S.MapContainerCustom>
+            <S.UpdateTime>{koreaData.updateTime}</S.UpdateTime>
+            <S.CityName>{name.name}</S.CityName>
+            <S.CityCaseContainer>
+                <S.CityCase>
+                    <CountUp
+                    start={0}
+                    end={newCase}
+                    duration={1.5}
+                    separator=",">
+                    </CountUp>
+                </S.CityCase>
+                <S.CityCaseStatus>당일 확진자</S.CityCaseStatus>
+            </S.CityCaseContainer>
+            <S.CityCaseContainer>
+                <S.CityCase>
+                    <CountUp
+                    start={0}
+                    end={newTotalCase}
+                    duration={1.5}
+                    separator=",">
+                    </CountUp>
+                </S.CityCase>
+                <S.CityCaseStatus>누적 확진자</S.CityCaseStatus>
+            </S.CityCaseContainer>
+            <S.MapContainerCustom
+            zoom={6.5}
+            center={[36, 128]}>
+                <GeoJSON style={S.cityStyle} data={mapData.features}
+                onEachFeature={onEachCity} />
+            </S.MapContainerCustom>
         </>
     );
 }

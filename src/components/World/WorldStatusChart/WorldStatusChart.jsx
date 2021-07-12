@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import * as S from './Chart.style';
+import * as S from './WorldStatusChart.style';
 
-function Chart(){
+const WorldStatusChart = () => {
     const [dailyData, setDailyData] = useState({});
 
     const url = 'https://disease.sh/v3/covid-19/historical/all?lastdays=90';
@@ -17,6 +17,7 @@ function Chart(){
         }
         getData();
     }, []);
+
     let dateLabels;
     let casesData;
     let deathsData;
@@ -81,4 +82,5 @@ function Chart(){
         </>
     );
 }
-export default Chart;
+
+export default WorldStatusChart;

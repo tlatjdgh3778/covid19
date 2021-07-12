@@ -1,21 +1,5 @@
 import styled, {css} from 'styled-components';
 
-const MainLeftContainer = styled.div`
-    margin: 0 3rem;
-    color: ${(props) => props.theme.color.fontColor};
-
-    @media ${(props) => props.theme.device.TabletLandscape}{
-        margin: 1rem;
-    }
-    @media ${(props) => props.theme.device.TabletPortrait}{
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        width: 85%;
-        /* min-width: 100%; */
-    }
-`;
-
 const DomesticStatusTitle = styled.div`
     margin: 1rem;
     padding-bottom: 1rem;
@@ -87,4 +71,4 @@ const TodayData = styled.div`
     }
 `;
 
-export { MainLeftContainer, DomesticStatusTitle, DomesticStatusContainer, container, TotalContainer, Title, Data, TodayData };
+export { DomesticStatusTitle, DomesticStatusContainer, container, TotalContainer, Title, Data, TodayData };

@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from './CityStatus.style';
+import * as S from './DomesticCityStatus.style';
 
-function CityStatus({cityData}) {
+const DomesticCityStatus = ({cityData}) => {
 
 const ew = Object.entries(cityData);
     return(
@@ -42,4 +42,4 @@ const ew = Object.entries(cityData);
         </>
     )
 }
-export default CityStatus;
+export default DomesticCityStatus;

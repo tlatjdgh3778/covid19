@@ -1,9 +1,10 @@
 import React from 'react';
-import * as S from './WorldStatus.style';
+import * as S from './Countries.style';
 
-function WorldStatus({countriesData}) {
+const Countries = ({ countriesData }) => {
 
-   const countries = Object.entries(countriesData);
+    const countries = Object.entries(countriesData);
+    
     return(
         <>
         <S.CityContainer>나라 별 현황</S.CityContainer>
@@ -41,4 +42,4 @@ function WorldStatus({countriesData}) {
         </>
     )
 }
-export default WorldStatus;
+export default Countries;
