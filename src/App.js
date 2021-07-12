@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import theme from 'style/theme';
 import Loader from 'react-loader-spinner';
 import { Route, Switch } from 'react-router-dom';
+import { getKoreaData, getCityData, getWorldData, getCountriesData } from 'apis/getCovidData';
 import * as GS from 'style/Component.style';
 
 const AppStyle = styled.div`
@@ -57,69 +58,52 @@ function App() {
         countriesData:'',
     });
 
-    const API_KEY = process.env.REACT_APP_API_KEY;
-
-    const korea_url = `https://ajax-api.corona-19.kr/?dir=korea&serviceKey=${API_KEY}`;
-    const city_url = `https://ajax-api.corona-19.kr/?dir=country&serviceKey=${API_KEY}`;
-
-    const world_url = 'https://disease.sh/v3/covid-19/all';
-    const countries_url = 'https://disease.sh/v3/covid-19/countries';
-
     useEffect(()=>{
     const getData = async () => {
-        const korea_response = await fetch(korea_url);
-        const korea_data = await korea_response.json();
-    
-        const city_response = await fetch(city_url);
-        const city_data = await city_response.json();
-
-        const response = await fetch(world_url);
-        const data = await response.json();
-
-        const countries_response = await fetch(countries_url);
-        const countries_data = await countries_response.json();
+        const koreaData = await getKoreaData();
+        const cityData = await getCityData(); 
+        const worldData = await getWorldData();
+        const countriesData = await getCountriesData();
 
         setWorld({
             worldData:{
-                confirmed:data.cases,
-                deaths:data.deaths,
-                recovered:data.recovered,
+                confirmed:worldData.cases,
+                deaths:worldData.deaths,
+                recovered:worldData.recovered,
             },
-            countriesData:countries_data,
+            countriesData,
         });
 
-        setData({koreaData: korea_data, cityData:{
-        seoul:city_data.seoul,
-        incheon:city_data.incheon,
-        gyeonggi:city_data.gyeonggi,
-        gangwon:city_data.gangwon,
-        chungbuk:city_data.chungbuk,
-        chungnam:city_data.chungnam,
-        daejeon:city_data.daejeon,
-        sejong:city_data.sejong,
-        jeonbuk:city_data.jeonbuk,
-        jeonnam:city_data.jeonnam,
-        gwangju:city_data.gwangju,
-        gyeongbuk:city_data.gyeongbuk,
-        daegu:city_data.daegu,
-        ulsan:city_data.ulsan,
-        gyeongnam:city_data.gyeongnam,
-        busan:city_data.busan,
-        jeju:city_data.jeju,
-        korea:city_data.korea,
+        setData({koreaData, cityData:{
+        seoul:cityData.seoul,
+        incheon:cityData.incheon,
+        gyeonggi:cityData.gyeonggi,
+        gangwon:cityData.gangwon,
+        chungbuk:cityData.chungbuk,
+        chungnam:cityData.chungnam,
+        daejeon:cityData.daejeon,
+        sejong:cityData.sejong,
+        jeonbuk:cityData.jeonbuk,
+        jeonnam:cityData.jeonnam,
+        gwangju:cityData.gwangju,
+        gyeongbuk:cityData.gyeongbuk,
+        daegu:cityData.daegu,
+        ulsan:cityData.ulsan,
+        gyeongnam:cityData.gyeongnam,
+        busan:cityData.busan,
+        jeju:cityData.jeju,
+        korea:cityData.korea,
         }});
 
         setIsLoading(false);
     }
     getData();
-    },[city_url, korea_url]);
+    },[]);
     
-
     const changeTheme = () => {
         setIsDark(!isDark);
-    }
-    console.log(world);
-    console.log(world);
+    };
+
     return (
     <>
     <Router basename="/covid19">
