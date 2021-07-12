@@ -63,15 +63,7 @@ const darkMode = {
     device,
 }
 
-// const color = {
-//     white: 'white',
-//     black: 'black',
-//     highlight: '#f2f2f2',
-//     rightBgColor: '#ece9e6',
-// }
-
 const theme = {
-    // color,
     lightMode,
     darkMode,
 }
