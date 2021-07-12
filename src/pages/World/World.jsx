@@ -1,8 +1,6 @@
 import React from 'react';
-// import React, { useEffect, useState, useContext } from 'react';
-import WorldStatus from 'components/World/WorldStatus/WorldStatus';
-import WorldStatusChart from 'components/World/WorldStatusChart/WorldStatusChart';
-import Countries from 'components/World/Countries/Countries';
+import { WorldStatus, WorldStatusChart, Countries } from 'components/World/index';
+
 import * as GS from 'style/Component.style';
 
 const World = ({ world }) => {

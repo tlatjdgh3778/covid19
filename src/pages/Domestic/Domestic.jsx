@@ -1,6 +1,5 @@
 import React from 'react'
-import DomesticStatus from 'components/Domestic/DomesticStatus/DomesticStatus';
-import DomesticCityStatus from 'components/Domestic/DomesticCityStatus/DomesticCityStatus';
+import { DomesticStatus, DomesticCityStatus } from 'components/Domestic/index';
 import Map from 'components/Map/Map';
 import * as GS from 'style/Component.style';
 

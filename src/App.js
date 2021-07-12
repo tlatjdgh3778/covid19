@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-// import Map from './components/Map/Map';
-import GlobalStyle from './style/global';
-import SideBar from './components/SideBar/SideBar';
-// import Main from './components/Main/Main';
-import World from 'components/World/World';
-import Domestic from 'components/Domestic/Domestic';
+import GlobalStyle from 'style/global';
+import SideBar from 'components/SideBar/SideBar';
+import { World, Domestic } from 'pages/index';
 import styled, { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
-import theme from './style/theme';
+import theme from 'style/theme';
 import Loader from 'react-loader-spinner';
 import { Route, Switch } from 'react-router-dom';
 import * as GS from 'style/Component.style';
