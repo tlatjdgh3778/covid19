@@ -1,4 +1,4 @@
-import { koreaUrl, cityUrl, worldUrl, countriesUrl } from 'utils/constant';
+import { koreaUrl, worldUrl, countriesUrl } from 'utils/constant';
 
 const getKoreaData = async() => {
     try {
