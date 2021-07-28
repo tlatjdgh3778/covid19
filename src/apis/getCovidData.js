@@ -14,7 +14,7 @@ const getKoreaData = async() => {
 
 const getCityData = async() => {
     try {
-        const cityResponse = await fetch(cityUrl);
+        const cityResponse = await fetch('https://api.corona-19.kr/korea/country/new/?serviceKey=RNZOsrb1kf6D89weJtm74ABhzSjcMI2Ku');
         const cityData = await cityResponse.json();
 
         return cityData;

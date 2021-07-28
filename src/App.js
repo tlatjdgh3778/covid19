@@ -99,7 +99,7 @@ function App() {
     }
     getData();
     },[]);
-    
+    console.log(data)
     const changeTheme = () => {
         setIsDark(!isDark);
     };
