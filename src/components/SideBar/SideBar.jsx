@@ -1,29 +1,24 @@
-import React, { useState } from 'react';
-import SideBarTitle from './SideBarTitle/SideBarTitle';
-import SideBarContent from './SideBarContent/SideBarContent';
-import SideBarFooter from './SideBarFooter/SideBarFooter';
-import SideBarModal from './SideBarModal/SideBarModal';
-import * as S from './SideBar.style';
+import React from "react";
+import SideBarTitle from "./SideBarTitle/SideBarTitle";
+import SideBarContent from "./SideBarContent/SideBarContent";
+import SideBarFooter from "./SideBarFooter/SideBarFooter";
+import SideBarModal from "./SideBarModal/SideBarModal";
+import * as S from "./SideBar.style";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "store/modules/menu";
 
-function SideBar({changeTheme, isDark}) {
-    const [showModal, setShowModal] = useState(false);
+const SideBar = () => {
+    const dispatch = useDispatch();
 
-    const openModal = () => {
-        setShowModal(true);
-    }
-    const closeModal = () => {
-        setShowModal(false);
-    }
-    return(
+    return (
         <S.SideBarContainer>
             <SideBarTitle></SideBarTitle>
             <SideBarContent></SideBarContent>
-            <SideBarFooter changeTheme={changeTheme} isDark={isDark}></SideBarFooter>
-            <S.MenuIcon onClick={openModal}></S.MenuIcon>
-            <SideBarModal showModal={showModal} closeModal={closeModal} changeTheme={changeTheme} isDark={isDark}></SideBarModal>
+            <SideBarFooter></SideBarFooter>
+            <S.MenuIcon onClick={() => dispatch(toggleMenu())}></S.MenuIcon>
+            <SideBarModal></SideBarModal>
         </S.SideBarContainer>
     );
-
-}
+};
 
 export default SideBar;
