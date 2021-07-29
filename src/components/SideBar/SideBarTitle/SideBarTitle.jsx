@@ -1,14 +1,14 @@
-import React from 'react';
-import * as S from './SideBarTitle.style';
+import React from "react";
+import * as S from "./SideBarTitle.style";
 
-function SideBarTitle() {
-    return(
+const SideBarTitle = () => {
+    return (
         <>
-        <S.SideBarTitleContainer>
-            <S.Title>COVID 19 </S.Title>
-            <S.Title>TRACKER</S.Title>
-        </S.SideBarTitleContainer>
+            <S.SideBarTitleContainer>
+                <S.Title>COVID 19 </S.Title>
+                <S.Title>TRACKER</S.Title>
+            </S.SideBarTitleContainer>
         </>
     );
-}
+};
 export default SideBarTitle;
