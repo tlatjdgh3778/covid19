@@ -1,23 +1,26 @@
-import React from 'react';
-import * as S from './SideBarFooter.style';
+import React from "react";
+import * as S from "./SideBarFooter.style";
+import { useSelector, useDispatch } from "react-redux";
+import { changeMode } from "store/modules/mode";
 
-function SideBarFooter({changeTheme, isDark}){
+const SideBarFooter = () => {
+    const isDark = useSelector(({ mode }) => mode.isDark);
+    const dispatch = useDispatch();
 
-    const onClick = () => {
-        changeTheme(isDark);
-    }
-
-    return(
+    return (
         <S.SideBarFooterContainer>
-                <div onClick={onClick}>
-                {isDark?<S.LightModeIcon />:<S.DarkModeIcon />}
-                </div>
-                <S.GithubLink target="_blank" href="https://github.com/tlatjdgh3778/COVID19"
-                alt="githubLink">
-                    <S.GithubIcon />
-                </S.GithubLink>
+            <div onClick={() => dispatch(changeMode())}>
+                {isDark ? <S.LightModeIcon /> : <S.DarkModeIcon />}
+            </div>
+            <S.GithubLink
+                target="_blank"
+                href="https://github.com/tlatjdgh3778/COVID19"
+                alt="githubLink"
+            >
+                <S.GithubIcon />
+            </S.GithubLink>
         </S.SideBarFooterContainer>
     );
-}
+};
 
 export default SideBarFooter;
