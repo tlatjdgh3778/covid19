@@ -3,24 +3,16 @@ import { DomesticStatus, DomesticCityStatus } from "components/Domestic/index";
 import Map from "components/Map/Map";
 import * as GS from "style/Component.style";
 
-const Domestic = ({ koreaData, cityData, isDark }) => {
+const Domestic = () => {
     return (
         <>
             <GS.LeftContainer>
-                <DomesticStatus
-                    koreaData={koreaData}
-                    cityData={cityData}
-                ></DomesticStatus>
-                <DomesticCityStatus cityData={cityData}></DomesticCityStatus>
+                <DomesticStatus></DomesticStatus>
+                <DomesticCityStatus></DomesticCityStatus>
             </GS.LeftContainer>
             <GS.RightContainer>
-                <Map
-                    koreaData={koreaData}
-                    cityData={cityData}
-                    isDark={isDark}
-                ></Map>
+                <Map></Map>
             </GS.RightContainer>
-            {/* <div>국내 api 주소 작업 중</div> */}
         </>
     );
 };
