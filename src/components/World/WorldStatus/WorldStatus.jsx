@@ -2,6 +2,7 @@ import React from "react";
 import * as GS from "style/Component.style";
 import { useSelector, useDispatch } from "react-redux";
 import { changeState } from "store/modules/state";
+
 const WorldStatus = () => {
     const dispatch = useDispatch();
     const worldData = useSelector(({ world }) => world.worldData.data);
