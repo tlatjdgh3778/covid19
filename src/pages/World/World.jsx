@@ -1,21 +1,24 @@
-import React from 'react';
-import { WorldStatus, WorldStatusChart, Countries } from 'components/World/index';
+import React from "react";
+import {
+    WorldStatus,
+    WorldStatusChart,
+    WorldCountriesStatus,
+} from "components/World/index";
 
-import * as GS from 'style/Component.style';
+import * as GS from "style/Component.style";
 
-const World = ({ world }) => {
-
-    return(
+const World = () => {
+    return (
         <>
             <GS.LeftContainer>
-                <WorldStatus worldData={world.worldData} />
-                <WorldStatusChart />
+                <WorldStatus />
+                <WorldCountriesStatus></WorldCountriesStatus>
             </GS.LeftContainer>
             <GS.RightContainer>
-                <Countries countriesData={world.countriesData}></Countries>
+                <WorldStatusChart />
             </GS.RightContainer>
         </>
     );
-}
+};
 
 export default World;
