@@ -1,7 +1,7 @@
 // mode module
 
 // actionTypes
-export const CHANGE_MODE = "mode/CHANGE_MODE";
+const CHANGE_MODE = "mode/CHANGE_MODE";
 
 // action creator
 export const changeMode = () => {

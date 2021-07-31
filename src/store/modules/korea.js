@@ -2,13 +2,13 @@
 import axios from "axios";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export const koreaUrl = `https://api.corona-19.kr/korea/?serviceKey=${API_KEY}`;
-export const cityUrl = `https://api.corona-19.kr/korea/country/new/?serviceKey=${API_KEY}`;
+const koreaUrl = `https://api.corona-19.kr/korea/?serviceKey=${API_KEY}`;
+const cityUrl = `https://api.corona-19.kr/korea/country/new/?serviceKey=${API_KEY}`;
 
 // actionTypes
-export const FETCH_KOREA_REQUEST = "korea/FETCH_KOREA_REQUEST";
-export const FETCH_KOREA_SUCCESS = "korea/FETCH_KOREA_SUCCESS";
-export const FETCH_KOREA_FAILURE = "korea/FETCH_KOREA_FAILURE";
+const FETCH_KOREA_REQUEST = "korea/FETCH_KOREA_REQUEST";
+const FETCH_KOREA_SUCCESS = "korea/FETCH_KOREA_SUCCESS";
+const FETCH_KOREA_FAILURE = "korea/FETCH_KOREA_FAILURE";
 
 // action creator
 export const fetchKoreaRequest = (value) => {

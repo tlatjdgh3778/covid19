@@ -1,7 +1,7 @@
 // menu module
 
 // actionTypes
-export const TOGGLE_MENU = "menu/TOGGLE_MENU";
+const TOGGLE_MENU = "menu/TOGGLE_MENU";
 
 // action creator
 export const toggleMenu = () => {
