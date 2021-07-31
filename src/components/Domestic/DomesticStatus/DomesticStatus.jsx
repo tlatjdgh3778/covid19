@@ -25,7 +25,7 @@ const DomesticStatus = () => {
                                     {name === "확진환자" ? (
                                         <>
                                             <S.Data color={"#df0736"}>
-                                                {koreaData.TotalCase}
+                                                {koreaData.TotalCase.toLocaleString()}
                                             </S.Data>
                                             <S.TodayData color={"#df0736"}>
                                                 <div>
@@ -34,14 +34,14 @@ const DomesticStatus = () => {
                                                         : ""}
                                                 </div>
                                                 <div>
-                                                    {cityData.korea.newCase}
+                                                    {cityData.korea.newCase.toLocaleString()}
                                                 </div>
                                             </S.TodayData>
                                         </>
                                     ) : name === "치료중" ? (
                                         <>
                                             <S.Data color={"#0562cb"}>
-                                                {koreaData.NowCase}
+                                                {koreaData.NowCase.toLocaleString()}
                                             </S.Data>
                                             <S.TodayData color={"#0562cb"}>
                                                 <div>
@@ -51,14 +51,14 @@ const DomesticStatus = () => {
                                                         : ""}
                                                 </div>
                                                 <div>
-                                                    {koreaData.TotalCaseBefore}
+                                                    {koreaData.TotalCaseBefore.toLocaleString()}
                                                 </div>
                                             </S.TodayData>
                                         </>
                                     ) : name === "격리해제" ? (
                                         <>
                                             <S.Data color={"#27a643"}>
-                                                {koreaData.TotalRecovered}
+                                                {koreaData.TotalRecovered.toLocaleString()}
                                             </S.Data>
                                             <S.TodayData color={"#27a643"}>
                                                 <div>
@@ -68,14 +68,14 @@ const DomesticStatus = () => {
                                                         : ""}
                                                 </div>
                                                 <div>
-                                                    {koreaData.TodayRecovered}
+                                                    {koreaData.TodayRecovered.toLocaleString()}
                                                 </div>
                                             </S.TodayData>
                                         </>
                                     ) : (
                                         <>
                                             <S.Data>
-                                                {koreaData.TotalDeath}
+                                                {koreaData.TotalDeath.toLocaleString()}
                                             </S.Data>
                                             <S.TodayData>
                                                 <div>
@@ -84,7 +84,7 @@ const DomesticStatus = () => {
                                                         : ""}
                                                 </div>
                                                 <div>
-                                                    {koreaData.TodayDeath}
+                                                    {koreaData.TodayDeath.toLocaleString()}
                                                 </div>
                                             </S.TodayData>
                                         </>
