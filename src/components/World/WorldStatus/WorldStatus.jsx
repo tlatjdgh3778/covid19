@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./WorldStatus.style";
+import * as GS from "style/Component.style";
 import { useSelector } from "react-redux";
 
 const WorldStatus = () => {
@@ -8,21 +8,21 @@ const WorldStatus = () => {
     const names = ["확진환자", "격리해제", "사망자"];
 
     return (
-        <S.WorldDataContainer>
-            <S.DomesticStatusTitle>세계현황</S.DomesticStatusTitle>
-            <S.DomesticStatusContainer>
+        <>
+            <GS.StatusTitle>세계현황</GS.StatusTitle>
+            <GS.StatusContainer>
                 {names.map((name, i) => {
                     return (
-                        <S.TotalContainer key={i}>
+                        <GS.TotalContainer key={i}>
                             {
                                 <>
-                                    <S.Title>{name}</S.Title>
+                                    <GS.Title>{name}</GS.Title>
                                     {name === "확진환자" ? (
                                         <>
-                                            <S.Data color={"#df0736"}>
+                                            <GS.Data color={"#df0736"}>
                                                 {worldData.cases.toLocaleString()}
-                                            </S.Data>
-                                            <S.TodayData color={"#df0736"}>
+                                            </GS.Data>
+                                            <GS.TodayData color={"#df0736"}>
                                                 <div>
                                                     {worldData.cases > 0
                                                         ? "+"
@@ -31,14 +31,14 @@ const WorldStatus = () => {
                                                 <div>
                                                     {worldData.todayCases.toLocaleString()}
                                                 </div>
-                                            </S.TodayData>
+                                            </GS.TodayData>
                                         </>
                                     ) : name === "격리해제" ? (
                                         <>
-                                            <S.Data color={"#27a643"}>
+                                            <GS.Data color={"#27a643"}>
                                                 {worldData.recovered.toLocaleString()}
-                                            </S.Data>
-                                            <S.TodayData color={"#27a643"}>
+                                            </GS.Data>
+                                            <GS.TodayData color={"#27a643"}>
                                                 <div>
                                                     {worldData.recovered > 0
                                                         ? "+"
@@ -47,14 +47,14 @@ const WorldStatus = () => {
                                                 <div>
                                                     {worldData.todayRecovered.toLocaleString()}
                                                 </div>
-                                            </S.TodayData>
+                                            </GS.TodayData>
                                         </>
                                     ) : (
                                         <>
-                                            <S.Data>
+                                            <GS.Data>
                                                 {worldData.deaths.toLocaleString()}
-                                            </S.Data>
-                                            <S.TodayData>
+                                            </GS.Data>
+                                            <GS.TodayData>
                                                 <div>
                                                     {worldData.deaths > 0
                                                         ? "+"
@@ -63,16 +63,16 @@ const WorldStatus = () => {
                                                 <div>
                                                     {worldData.todayDeaths.toLocaleString()}
                                                 </div>
-                                            </S.TodayData>
+                                            </GS.TodayData>
                                         </>
                                     )}
                                 </>
                             }
-                        </S.TotalContainer>
+                        </GS.TotalContainer>
                     );
                 })}
-            </S.DomesticStatusContainer>
-        </S.WorldDataContainer>
+            </GS.StatusContainer>
+        </>
     );
 };
 

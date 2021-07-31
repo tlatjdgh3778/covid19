@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./DomesticStatus.style";
+import * as GS from "style/Component.style";
 import { useSelector } from "react-redux";
 
 const DomesticStatus = () => {
@@ -14,20 +14,20 @@ const DomesticStatus = () => {
 
     return (
         <>
-            <S.DomesticStatusTitle>국내현황</S.DomesticStatusTitle>
-            <S.DomesticStatusContainer>
+            <GS.StatusTitle>국내현황</GS.StatusTitle>
+            <GS.StatusContainer>
                 {names.map((name, i) => {
                     return (
-                        <S.TotalContainer key={i}>
+                        <GS.TotalContainer key={i}>
                             {
                                 <>
-                                    <S.Title>{name}</S.Title>
+                                    <GS.Title>{name}</GS.Title>
                                     {name === "확진환자" ? (
                                         <>
-                                            <S.Data color={"#df0736"}>
+                                            <GS.Data color={"#df0736"}>
                                                 {koreaData.TotalCase.toLocaleString()}
-                                            </S.Data>
-                                            <S.TodayData color={"#df0736"}>
+                                            </GS.Data>
+                                            <GS.TodayData color={"#df0736"}>
                                                 <div>
                                                     {cityData.korea.newCase > 0
                                                         ? "+"
@@ -36,14 +36,14 @@ const DomesticStatus = () => {
                                                 <div>
                                                     {cityData.korea.newCase.toLocaleString()}
                                                 </div>
-                                            </S.TodayData>
+                                            </GS.TodayData>
                                         </>
                                     ) : name === "치료중" ? (
                                         <>
-                                            <S.Data color={"#0562cb"}>
+                                            <GS.Data color={"#0562cb"}>
                                                 {koreaData.NowCase.toLocaleString()}
-                                            </S.Data>
-                                            <S.TodayData color={"#0562cb"}>
+                                            </GS.Data>
+                                            <GS.TodayData color={"#0562cb"}>
                                                 <div>
                                                     {koreaData.TotalCaseBefore >
                                                     0
@@ -53,14 +53,14 @@ const DomesticStatus = () => {
                                                 <div>
                                                     {koreaData.TotalCaseBefore.toLocaleString()}
                                                 </div>
-                                            </S.TodayData>
+                                            </GS.TodayData>
                                         </>
                                     ) : name === "격리해제" ? (
                                         <>
-                                            <S.Data color={"#27a643"}>
+                                            <GS.Data color={"#27a643"}>
                                                 {koreaData.TotalRecovered.toLocaleString()}
-                                            </S.Data>
-                                            <S.TodayData color={"#27a643"}>
+                                            </GS.Data>
+                                            <GS.TodayData color={"#27a643"}>
                                                 <div>
                                                     {koreaData.TodayRecovered >
                                                     0
@@ -70,14 +70,14 @@ const DomesticStatus = () => {
                                                 <div>
                                                     {koreaData.TodayRecovered.toLocaleString()}
                                                 </div>
-                                            </S.TodayData>
+                                            </GS.TodayData>
                                         </>
                                     ) : (
                                         <>
-                                            <S.Data>
+                                            <GS.Data>
                                                 {koreaData.TotalDeath.toLocaleString()}
-                                            </S.Data>
-                                            <S.TodayData>
+                                            </GS.Data>
+                                            <GS.TodayData>
                                                 <div>
                                                     {koreaData.TodayDeath > 0
                                                         ? "+"
@@ -86,15 +86,15 @@ const DomesticStatus = () => {
                                                 <div>
                                                     {koreaData.TodayDeath.toLocaleString()}
                                                 </div>
-                                            </S.TodayData>
+                                            </GS.TodayData>
                                         </>
                                     )}
                                 </>
                             }
-                        </S.TotalContainer>
+                        </GS.TotalContainer>
                     );
                 })}
-            </S.DomesticStatusContainer>
+            </GS.StatusContainer>
         </>
     );
 };
