@@ -1,5 +1,50 @@
 import styled, { css } from "styled-components";
 
+const handleColor = (props) => {
+    if (props.color === "확진환자") {
+        return props.theme.color.confirmedColor;
+    }
+    if (props.color === "치료중") {
+        return props.theme.color.activedColor;
+    }
+    if (props.color === "격리해제") {
+        return props.theme.color.recoveredColor;
+    }
+    if (props.color === "사망자") {
+        return props.theme.color.fontColor;
+    }
+};
+
+const handleHoverColor = (props) => {
+    if (props.color === "확진환자") {
+        return props.theme.color.confirmedHover;
+    }
+    if (props.color === "치료중") {
+        return props.theme.color.activedHover;
+    }
+    if (props.color === "격리해제") {
+        return props.theme.color.recoveredHover;
+    }
+    if (props.color === "사망자") {
+        return props.theme.color.deathHover;
+    }
+};
+
+const handleActiveColor = (props) => {
+    if (props.color === props.activeColor && props.activeColor === "확진환자") {
+        return props.theme.color.confirmedHover;
+    }
+    if (props.color === props.activeColor && props.activeColor === "치료중") {
+        return props.theme.color.activedHover;
+    }
+    if (props.color === props.activeColor && props.activeColor === "격리해제") {
+        return props.theme.color.recoveredHover;
+    }
+    if (props.color === props.activeColor && props.activeColor === "사망자") {
+        return props.theme.color.deathHover;
+    }
+};
+
 const MainContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -8,12 +53,12 @@ const MainContainer = styled.div`
     margin-left: 11rem;
     margin-right: 3rem;
     padding-top: 5rem;
-    color: ${(props) => props.theme.color.fontColor};
+    color: ${({ theme }) => theme.color.fontColor};
 
-    @media ${(props) => props.theme.device.TabletLandscape} {
+    @media ${({ theme }) => theme.device.TabletLandscape} {
         margin-left: 9rem;
     }
-    @media ${(props) => props.theme.device.TabletPortrait} {
+    @media ${({ theme }) => theme.device.TabletPortrait} {
         display: flex;
         flex-direction: column;
         margin-left: 0;
@@ -27,12 +72,12 @@ const MainContainer = styled.div`
 const RightContainer = styled.div`
     width: 37rem;
     margin: 0 3rem;
-    color: ${(props) => props.theme.color.fontColor};
+    color: ${({ theme }) => theme.color.fontColor};
 
-    @media ${(props) => props.theme.device.TabletLandscape} {
+    @media ${({ theme }) => theme.device.TabletLandscape} {
         margin: 1rem;
     }
-    @media ${(props) => props.theme.device.TabletPortrait} {
+    @media ${({ theme }) => theme.device.TabletPortrait} {
         display: -webkit-flex;
         display: flex;
         flex-direction: column;
@@ -44,12 +89,12 @@ const RightContainer = styled.div`
 const LeftContainer = styled.div`
     width: 37rem;
     margin: 0 3rem;
-    color: ${(props) => props.theme.color.fontColor};
+    color: ${({ theme }) => theme.color.fontColor};
 
-    @media ${(props) => props.theme.device.TabletLandscape} {
+    @media ${({ theme }) => theme.device.TabletLandscape} {
         margin: 1rem;
     }
-    @media ${(props) => props.theme.device.TabletPortrait} {
+    @media ${({ theme }) => theme.device.TabletPortrait} {
         display: flex;
         flex-direction: column;
         margin: 0;
@@ -68,8 +113,8 @@ const StatusTitle = styled.div`
     margin: 1rem;
     padding-bottom: 1rem;
     font-weight: 700;
-    font-size: ${(props) => props.theme.fontSize.lg};
-    border-bottom: 1px solid ${(props) => props.theme.color.fontColor};
+    font-size: ${({ theme }) => theme.fontSize.lg};
+    border-bottom: 1px solid ${({ theme }) => theme.color.fontColor};
 `;
 const container = css`
     border-radius: 10px;
@@ -81,10 +126,10 @@ const container = css`
     justify-content: space-between;
     cursor: default;
 
-    @media ${(props) => props.theme.device.TabletPortrait} {
+    @media ${({ theme }) => theme.device.TabletPortrait} {
         margin: 0;
     }
-    @media ${(props) => props.theme.device.MobileLandscape} {
+    @media ${({ theme }) => theme.device.MobileLandscape} {
         width: 3rem;
         height: 4rem;
         padding: 0.25rem;
@@ -93,35 +138,37 @@ const container = css`
 
 const TotalContainer = styled.div`
     ${container};
+    background-color: ${(props) => handleActiveColor(props)};
     &:hover {
-        background-color: ${(props) => props.theme.color.hoverColor};
+        background-color: ${(props) => handleHoverColor(props)};
     }
 `;
 
 const Title = styled.div`
-    @media ${(props) => props.theme.device.TabletPortrait} {
-        font-size: ${(props) => props.theme.fontSize.ssm};
+    @media ${({ theme }) => theme.device.TabletPortrait} {
+        font-size: ${({ theme }) => theme.fontSize.ssm};
     }
 `;
 
 const Data = styled.div`
-    font-size: ${(props) => props.theme.fontSize.lg};
-    font-weight: 700;
-    color: ${(props) => props.color || props.theme.color.fontColor};
+    color: ${(props) => handleColor(props)};
 
-    @media ${(props) => props.theme.device.TabletPortrait} {
-        font-size: ${(props) => props.theme.fontSize.md};
+    font-size: ${({ theme }) => theme.fontSize.lg};
+    font-weight: 700;
+
+    @media ${({ theme }) => theme.device.TabletPortrait} {
+        font-size: ${({ theme }) => theme.fontSize.md};
     }
-    @media ${(props) => props.theme.device.MobileLandscape} {
-        font-size: ${(props) => props.theme.fontSize.sm};
+    @media ${({ theme }) => theme.device.MobileLandscape} {
+        font-size: ${({ theme }) => theme.fontSize.sm};
     }
 `;
 const TodayData = styled.div`
-    color: ${(props) => props.color || props.theme.color.fontColor};
+    color: ${(props) => handleColor(props)};
     display: flex;
 
-    @media ${(props) => props.theme.device.TabletPortrait} {
-        font-size: ${(props) => props.theme.fontSize.ssm};
+    @media ${({ theme }) => theme.device.TabletPortrait} {
+        font-size: ${({ theme }) => theme.fontSize.ssm};
     }
 `;
 
