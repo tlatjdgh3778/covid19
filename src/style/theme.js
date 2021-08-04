@@ -54,20 +54,26 @@ const darkMode = {
         wallpaperColor: "#1b2635",
         bgColor: "#233044",
         fontColor: "#6c757d",
-        fontRed: "#df0736",
-        fontBlue: "#0562cb",
-        fontGreen: "#27a643",
 
         highlightColor: "#2c1952",
         hoverColor: "#152338",
-        chartRed: "#311325",
-        chartGreen: "#162626",
+
+        chartConfirmed: "#ffe1e6",
+        chartRecovered: "#e4f4e7",
+        chartActived: "#dfeeff",
         chartColor: "#191928",
+        chartRed: "#331327",
 
         iconColor: "#ffc107",
+
         confirmedColor: "#df0736",
         recoveredColor: "#27a643",
         activedColor: "#0562cb",
+
+        confirmedHover: "#331327",
+        recoveredHover: "#172827",
+        activedHover: "#132240",
+        deathHover: "#202230",
     },
     fontSize,
     device,
