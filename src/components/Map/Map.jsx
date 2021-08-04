@@ -92,7 +92,14 @@ const Map = () => {
                         separator=","
                     ></CountUp>
                 </S.CityCase>
-                <S.CityCaseStatus>{currentState} 수</S.CityCaseStatus>
+                {currentState === "치료중" ? (
+                    <S.CityCaseStatus>
+                        {currentState} 수(치료중 수는 데이터가 제공되지
+                        않습니다.)
+                    </S.CityCaseStatus>
+                ) : (
+                    <S.CityCaseStatus>{currentState} 수</S.CityCaseStatus>
+                )}
             </S.CityCaseContainer>
             <S.MapContainerCustom zoom={6.5} center={[36, 128]}>
                 <GeoJSON
