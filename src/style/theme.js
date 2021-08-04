@@ -13,12 +13,12 @@ const device = {
 };
 
 const fontSize = {
-    ssm: "12px",
-    sm: "16px",
-    md: "20px",
-    lg: "24px",
-    xl: "28px",
-    xxl: "32px",
+    ssm: "0.5rem",
+    sm: "0.7rem",
+    md: "1rem",
+    lg: "1.2rem",
+    xl: "1.5rem",
+    xxl: "2rem",
 };
 
 const lightMode = {
