@@ -27,6 +27,7 @@ const WorldStatus = () => {
                             key={i}
                             color={name}
                             activeColor={currentState}
+                            style={{ width: "calc(33%)" }}
                         >
                             <GS.Title>{name}</GS.Title>
                             <>

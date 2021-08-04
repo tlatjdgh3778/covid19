@@ -29,6 +29,7 @@ const DomesticStatus = () => {
                     onClick={onClick}
                     color="확진환자"
                     activeColor={currentState}
+                    style={{ width: "calc(25%)" }}
                 >
                     {
                         <>
@@ -54,6 +55,7 @@ const DomesticStatus = () => {
                             onClick={onClick}
                             color={name}
                             activeColor={currentState}
+                            style={{ width: "calc(25%)" }}
                         >
                             {
                                 <>
