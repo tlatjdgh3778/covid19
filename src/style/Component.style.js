@@ -139,6 +139,7 @@ const container = css`
 const TotalContainer = styled.div`
     ${container};
     background-color: ${(props) => handleActiveColor(props)};
+    cursor: pointer;
     &:hover {
         background-color: ${(props) => handleHoverColor(props)};
     }
