@@ -5,6 +5,7 @@ const ChartStyle = css`
     border-radius: 10px;
     margin: 1rem 0;
     padding: 0.5rem 0;
+    background-color: ${(props) => props.theme.color.chartColor};
 `;
 const ChartTitle = css`
     margin: 0.5rem;
@@ -54,17 +55,8 @@ const options = {
         ],
     },
 };
-const CasesChartContainer = styled.div`
+const ChartContainer = styled.div`
     ${ChartStyle};
-    background-color: ${(props) => props.theme.color.chartRed};
-`;
-const RecoveredChartContainer = styled.div`
-    ${ChartStyle};
-    background-color: ${(props) => props.theme.color.chartGreen};
-`;
-const DeathsChartContainer = styled.div`
-    ${ChartStyle};
-    background-color: ${(props) => props.theme.color.chartColor};
 `;
 const CasesTitle = styled.div`
     ${ChartTitle}
@@ -90,9 +82,7 @@ export {
     ChartStyle,
     ChartTitle,
     options,
-    CasesChartContainer,
-    RecoveredChartContainer,
-    DeathsChartContainer,
+    ChartContainer,
     CasesTitle,
     RecoveredTitle,
     DeathsTitle,

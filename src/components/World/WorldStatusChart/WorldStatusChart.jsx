@@ -58,18 +58,18 @@ const WorldStatusChart = () => {
     return (
         <>
             <S.Title>전 세계 코로나 차트</S.Title>
-            <S.CasesChartContainer>
+            <S.ChartContainer>
                 <S.CasesTitle>확진자 수</S.CasesTitle>
                 <Line data={casesChart} options={S.options}></Line>
-            </S.CasesChartContainer>
-            <S.RecoveredChartContainer>
+            </S.ChartContainer>
+            <S.ChartContainer>
                 <S.RecoveredTitle>완치자 수</S.RecoveredTitle>
                 <Line data={recoveredChart} options={S.options}></Line>
-            </S.RecoveredChartContainer>
-            <S.DeathsChartContainer>
+            </S.ChartContainer>
+            <S.ChartContainer>
                 <S.DeathsTitle>사망자 수</S.DeathsTitle>
                 <Line data={deathsChart} options={S.options}></Line>
-            </S.DeathsChartContainer>
+            </S.ChartContainer>
         </>
     );
 };
