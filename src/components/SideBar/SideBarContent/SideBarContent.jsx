@@ -6,16 +6,16 @@ const SideBarContent = () => {
     return (
         <S.SideBarContentContainer>
             <NavLink exact to="/">
-                <S.DomesticContainer>
+                <S.MenuContainer>
                     <S.HomeIcon />
-                    <S.DomesticStatus>국내 현황</S.DomesticStatus>
-                </S.DomesticContainer>
+                    <div>국내 현황</div>
+                </S.MenuContainer>
             </NavLink>
             <NavLink to="/world">
-                <S.WorldContainer>
+                <S.MenuContainer>
                     <S.WorldIcon />
-                    <S.WorldStatus>세계 현황</S.WorldStatus>
-                </S.WorldContainer>
+                    <div>세계 현황</div>
+                </S.MenuContainer>
             </NavLink>
         </S.SideBarContentContainer>
     );
