@@ -1,9 +1,6 @@
 // korea Data module
 import axios from "axios";
-const API_KEY = process.env.REACT_APP_API_KEY;
-
-const koreaUrl = `https://api.corona-19.kr/korea/?serviceKey=${API_KEY}`;
-const cityUrl = `https://api.corona-19.kr/korea/country/new/?serviceKey=${API_KEY}`;
+import { koreaUrl, cityUrl } from "utils/constant";
 
 // actionTypes
 const FETCH_KOREA_REQUEST = "korea/FETCH_KOREA_REQUEST";

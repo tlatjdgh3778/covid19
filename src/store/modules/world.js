@@ -1,8 +1,6 @@
 // world module
 import axios from "axios";
-
-export const worldUrl = "https://disease.sh/v3/covid-19/all";
-export const countriesUrl = "https://disease.sh/v3/covid-19/countries";
+import { worldUrl, countriesUrl } from "utils/constant";
 
 // actionTypes
 const FETCH_WORLD_REQUEST = "world/FETCH_WORLD_REQUEST";

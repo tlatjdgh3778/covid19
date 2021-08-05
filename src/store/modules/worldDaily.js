@@ -1,8 +1,6 @@
 // worldDaily module
-
 import axios from "axios";
-export const worldDaily =
-    "https://disease.sh/v3/covid-19/historical/all?lastdays=90";
+import { worldDaily } from "utils/constant";
 
 // actionTypes
 const FETCH_WORLD_DAILY_REQUEST = "worldDaily/FETCH_WORLD_DAILY_REQUEST";
