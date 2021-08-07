@@ -11,19 +11,21 @@ const Domestic = () => {
 
     return (
         <>
-            {loadingKorea || loadingCity ? (
-                <Loading />
-            ) : (
-                <>
-                    <GS.LeftContainer>
-                        <DomesticStatus></DomesticStatus>
-                        <DomesticCityStatus></DomesticCityStatus>
-                    </GS.LeftContainer>
-                    <GS.RightContainer>
-                        <Map></Map>
-                    </GS.RightContainer>
-                </>
-            )}
+            <GS.MainContainer>
+                {loadingKorea || loadingCity ? (
+                    <Loading />
+                ) : (
+                    <>
+                        <GS.LeftContainer>
+                            <DomesticStatus></DomesticStatus>
+                            <DomesticCityStatus></DomesticCityStatus>
+                        </GS.LeftContainer>
+                        <GS.RightContainer>
+                            <Map></Map>
+                        </GS.RightContainer>
+                    </>
+                )}
+            </GS.MainContainer>
         </>
     );
 };

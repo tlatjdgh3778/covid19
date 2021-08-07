@@ -7,7 +7,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import theme from "style/theme";
 import { Route, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import * as GS from "style/Component.style";
 import { fetchKoreaData } from "store/modules/korea";
 import { fetchWorldData } from "store/modules/world";
 import { fetchWorldDailyData } from "store/modules/worldDaily";
@@ -37,23 +36,13 @@ const App = () => {
     return (
         <>
             <Router basename="/covid19">
-                <ThemeProvider
-                    theme={isDark ? theme.darkMode : theme.lightMode}
-                >
+                <ThemeProvider theme={isDark ? theme.darkMode : theme.lightMode}>
                     <GlobalStyle />
                     <AppStyle>
                         <SideBar></SideBar>
                         <Switch>
-                            <Route exact path="/">
-                                <GS.MainContainer>
-                                    <Domestic></Domestic>
-                                </GS.MainContainer>
-                            </Route>
-                            <Route exact path="/world">
-                                <GS.MainContainer>
-                                    <World></World>
-                                </GS.MainContainer>
-                            </Route>
+                            <Route exact path="/" component={Domestic}></Route>
+                            <Route exact path="/world" component={World}></Route>
                         </Switch>
                     </AppStyle>
                 </ThemeProvider>
