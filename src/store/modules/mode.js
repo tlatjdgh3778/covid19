@@ -1,4 +1,5 @@
 // mode module
+import produce from "immer";
 
 // actionTypes
 const CHANGE_MODE = "mode/CHANGE_MODE";
@@ -16,13 +17,13 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case CHANGE_MODE:
-            return {
-                ...state,
-                isDark: !state.isDark,
-            };
-        default:
-            return state;
-    }
+    return produce(state, (draft) => {
+        switch (action.type) {
+            case CHANGE_MODE:
+                draft.isDark = !draft.isDark;
+                break;
+            default:
+                break;
+        }
+    });
 }

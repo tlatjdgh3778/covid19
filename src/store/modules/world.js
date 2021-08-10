@@ -1,5 +1,6 @@
 // world module
 import axios from "axios";
+import produce from "immer";
 import { worldUrl, countriesUrl } from "utils/constant";
 
 // actionTypes
@@ -75,68 +76,40 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case FETCH_WORLD_REQUEST:
-            if (action.value === "world") {
-                return {
-                    ...state,
-                    worldData: {
-                        ...state.worldData,
-                        loading: true,
-                    },
-                };
-            } else {
-                return {
-                    ...state,
-                    countriesData: {
-                        ...state.countriesData,
-                        loading: true,
-                    },
-                };
-            }
-        case FETCH_WORLD_SUCCESS:
-            if (action.value === "world") {
-                return {
-                    ...state,
-                    worldData: {
-                        ...state.worldData,
-                        loading: false,
-                        data: action.payload,
-                    },
-                };
-            } else {
-                return {
-                    ...state,
-                    countriesData: {
-                        ...state.countriesData,
-                        loading: false,
-                        data: action.payload,
-                    },
-                };
-            }
-        case FETCH_WORLD_FAILURE:
-            if (action.value === "world") {
-                return {
-                    ...state,
-                    worldData: {
-                        ...state.worldData,
-                        loading: false,
-                        data: [],
-                        err: action.payload,
-                    },
-                };
-            } else {
-                return {
-                    ...state,
-                    countriesData: {
-                        ...state.countriesData,
-                        loading: false,
-                        data: [],
-                        err: action.payload,
-                    },
-                };
-            }
-        default:
-            return state;
-    }
+    return produce(state, (draft) => {
+        switch (action.type) {
+            case FETCH_WORLD_REQUEST:
+                if (action.value === "world") {
+                    draft.worldData.loading = true;
+                    break;
+                } else {
+                    draft.countriesData.loading = true;
+                    break;
+                }
+            case FETCH_WORLD_SUCCESS:
+                if (action.value === "world") {
+                    draft.worldData.loading = false;
+                    draft.worldData.data = action.payload;
+                    break;
+                } else {
+                    draft.countriesData.loading = false;
+                    draft.countriesData.data = action.payload;
+                    break;
+                }
+            case FETCH_WORLD_FAILURE:
+                if (action.value === "world") {
+                    draft.worldData.loading = false;
+                    draft.worldData.data = [];
+                    draft.worldData.err = action.payload;
+                    break;
+                } else {
+                    draft.countriesData.loading = false;
+                    draft.countriesData.data = [];
+                    draft.countriesData.err = action.payload;
+                    break;
+                }
+            default:
+                break;
+        }
+    });
 }

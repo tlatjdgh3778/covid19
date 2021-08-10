@@ -1,4 +1,5 @@
 // state module
+import produce from "immer";
 
 // actionTypes
 const CHANGE_STATE = "state/CHANGE_STATE";
@@ -17,12 +18,13 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case CHANGE_STATE:
-            return {
-                currentState: action.payload,
-            };
-        default:
-            return state;
-    }
+    return produce(state, (draft) => {
+        switch (action.type) {
+            case CHANGE_STATE:
+                draft.currentState = action.payload;
+                break;
+            default:
+                break;
+        }
+    });
 }

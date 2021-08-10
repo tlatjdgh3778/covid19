@@ -1,5 +1,6 @@
 // worldDaily module
 import axios from "axios";
+import produce from "immer";
 import { worldDaily } from "utils/constant";
 
 // actionTypes
@@ -52,34 +53,22 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case FETCH_WORLD_DAILY_REQUEST:
-            return {
-                ...state,
-                dailyData: {
-                    ...state.dailyData,
-                    loading: true,
-                },
-            };
-        case FETCH_WORLD_DAILY_SUCCESS:
-            return {
-                ...state,
-                dailyData: {
-                    ...state.dailyData,
-                    loading: false,
-                    data: action.payload,
-                },
-            };
-        case FETCH_WORLD_DAILY_FAILURE:
-            return {
-                ...state,
-                dailyData: {
-                    ...state.dailyData,
-                    loading: false,
-                    err: action.payload,
-                },
-            };
-        default:
-            return state;
-    }
+    return produce(state, (draft) => {
+        switch (action.type) {
+            case FETCH_WORLD_DAILY_REQUEST:
+                draft.dailyData.loading = true;
+                break;
+            case FETCH_WORLD_DAILY_SUCCESS:
+                draft.dailyData.loading = false;
+                draft.dailyData.data = action.payload;
+                break;
+            case FETCH_WORLD_DAILY_FAILURE:
+                draft.dailyData = false;
+                draft.data = [];
+                draft.err = action.payload;
+                break;
+            default:
+                break;
+        }
+    });
 }
