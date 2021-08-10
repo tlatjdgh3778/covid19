@@ -1,4 +1,5 @@
 // menu module
+import produce from "immer";
 
 // actionTypes
 const TOGGLE_MENU = "menu/TOGGLE_MENU";
@@ -16,13 +17,13 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case TOGGLE_MENU:
-            return {
-                ...state,
-                isOpen: !state.isOpen,
-            };
-        default:
-            return state;
-    }
+    return produce(state, (draft) => {
+        switch (action.type) {
+            case TOGGLE_MENU:
+                draft.isOpen = !draft.isOpen;
+                break;
+            default:
+                break;
+        }
+    });
 }
