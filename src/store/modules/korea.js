@@ -1,5 +1,6 @@
 // korea Data module
 import axios from "axios";
+import produce from "immer";
 import { koreaUrl, cityUrl } from "utils/constant";
 
 // actionTypes
@@ -74,71 +75,40 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case FETCH_KOREA_REQUEST:
-            if (action.value === "korea") {
-                return {
-                    ...state,
-                    koreaData: {
-                        ...state.koreaData,
-                        loading: true,
-                    },
-                };
-            } else {
-                return {
-                    ...state,
-                    cityData: {
-                        ...state.cityData,
-                        loading: true,
-                    },
-                };
-            }
-        /* falls through */
-        case FETCH_KOREA_SUCCESS:
-            if (action.value === "korea") {
-                return {
-                    ...state,
-                    koreaData: {
-                        ...state.koreaData,
-                        loading: false,
-                        data: action.payload,
-                    },
-                };
-            } else {
-                return {
-                    ...state,
-                    cityData: {
-                        ...state.cityDate,
-                        loading: false,
-                        data: action.payload,
-                    },
-                };
-            }
-        /* falls through */
-        case FETCH_KOREA_FAILURE:
-            if (action.value === "korea") {
-                return {
-                    ...state,
-                    koreaData: {
-                        ...state.koreaData,
-                        loading: false,
-                        data: [],
-                        err: action.payload,
-                    },
-                };
-            } else {
-                return {
-                    ...state,
-                    cityData: {
-                        ...state.cityDate,
-                        loading: false,
-                        data: [],
-                        err: action.payload,
-                    },
-                };
-            }
-        /* falls through */
-        default:
-            return state;
-    }
+    return produce(state, (draft) => {
+        switch (action.type) {
+            case FETCH_KOREA_REQUEST:
+                if (action.value === "korea") {
+                    draft.koreaData.loading = true;
+                    break;
+                } else {
+                    draft.cityData.loading = true;
+                    break;
+                }
+            case FETCH_KOREA_SUCCESS:
+                if (action.value === "korea") {
+                    draft.koreaData.loading = false;
+                    draft.koreaData.data = action.payload;
+                    break;
+                } else {
+                    draft.cityData.loading = false;
+                    draft.cityData.data = action.payload;
+                    break;
+                }
+            case FETCH_KOREA_FAILURE:
+                if (action.value === "korea") {
+                    draft.koreaData.loading = false;
+                    draft.koreaData.data = [];
+                    draft.koreaData.err = action.payload;
+                    break;
+                } else {
+                    draft.cityData.loading = false;
+                    draft.cityData.data = [];
+                    draft.cityData.err = action.payload;
+                    break;
+                }
+            default:
+                break;
+        }
+    });
 }
