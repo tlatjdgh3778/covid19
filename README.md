@@ -41,3 +41,7 @@
 -   코드 리팩토링
 -   Context API 대신 react-redux로 상태관리 하도록 리팩토링 함
 -   ducks pattern 적용
+
+### update 2021.08.18
+
+-   TypeScript 적용
