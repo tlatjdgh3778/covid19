@@ -6,7 +6,6 @@ import { reset } from "styled-reset";
 const GlobalStyle = createGlobalStyle`
     ${reset};
 * {
-    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 
@@ -27,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     }
 }
 body {
+    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
     box-sizing: border-box;
     background-color: ${({ theme }) => theme.color.wallpaperColor};
     transition: all 0.5s;
