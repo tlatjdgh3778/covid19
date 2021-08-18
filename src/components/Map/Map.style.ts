@@ -40,7 +40,9 @@ const CityCase = styled.div`
     color: ${(props) => handleColor(props) || props.theme.color.confirmedColor};
     font-size: ${({ theme }) => theme.fontSize.lg};
 `;
-const CityCaseStatus = styled.div``;
+const CityCaseStatus = styled.div`
+    margin-top: 1rem;
+`;
 const UpdateTime = styled.div`
     margin-left: 1rem;
     margin-right: 1rem;
