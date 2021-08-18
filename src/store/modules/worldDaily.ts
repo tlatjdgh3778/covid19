@@ -3,6 +3,7 @@ import axios from "axios";
 import produce from "immer";
 import { worldDaily } from "utils/constant";
 import { Dispatch } from "redux";
+import { WorldDailyDataType, WorldDailyData } from "utils/types/worldData";
 
 // actionTypes
 const FETCH_WORLD_DAILY_REQUEST = "worldDaily/FETCH_WORLD_DAILY_REQUEST" as const;
@@ -16,7 +17,7 @@ export const fetchWorldDailyRequest = () => {
     };
 };
 
-export const fetchWorldDailySuccess = (data: object[]) => {
+export const fetchWorldDailySuccess = (data: WorldDailyDataType) => {
     return {
         type: FETCH_WORLD_DAILY_SUCCESS,
         payload: data,
@@ -39,7 +40,7 @@ export const fetchWorldDailyData = () => {
     return async (dispatch: Dispatch<WorldDailyAction>) => {
         dispatch(fetchWorldDailyRequest());
         await axios
-            .get(worldDaily)
+            .get<WorldDailyDataType>(worldDaily)
             .then((response) => {
                 dispatch(fetchWorldDailySuccess(response.data));
             })
@@ -55,7 +56,7 @@ type WorldDailyState = {
     dailyData: {
         loading: boolean;
         err: string;
-        data: object[];
+        data: WorldDailyDataType;
     };
 };
 
@@ -63,7 +64,7 @@ const initialState: WorldDailyState = {
     dailyData: {
         loading: false,
         err: "",
-        data: [],
+        data: WorldDailyData,
     },
 };
 
@@ -82,7 +83,7 @@ export default function reducer(
                 break;
             case FETCH_WORLD_DAILY_FAILURE:
                 draft.dailyData.loading = false;
-                draft.dailyData.data = [];
+                draft.dailyData.data = WorldDailyData;
                 draft.dailyData.err = action.payload;
                 break;
             default:

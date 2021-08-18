@@ -2,7 +2,7 @@
 import produce from "immer";
 
 // actionTypes
-const CHANGE_STATE = "state/CHANGE_STATE";
+const CHANGE_STATE = "state/CHANGE_STATE" as const;
 
 // action creator
 export const changeState = (state: string) => {

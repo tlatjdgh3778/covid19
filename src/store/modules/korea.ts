@@ -3,6 +3,7 @@ import axios from "axios";
 import produce from "immer";
 import { koreaUrl, cityUrl } from "utils/constant";
 import { Dispatch } from "redux";
+import { KoreaCityDataType, KoreaDataType, koreaData, koreaCityData } from "utils/types/koreaData";
 
 // actionTypes
 const FETCH_KOREA_REQUEST = "korea/FETCH_KOREA_REQUEST" as const;
@@ -17,7 +18,7 @@ export const fetchKoreaRequest = (value: string) => {
     };
 };
 
-export const fetchKoreaSuccess = (data: object[], value: string) => {
+export const fetchKoreaSuccess = (data: any, value: string) => {
     return {
         type: FETCH_KOREA_SUCCESS,
         payload: data,
@@ -39,11 +40,11 @@ type KoreaAction =
     | ReturnType<typeof fetchKoreaSuccess>
     | ReturnType<typeof fetchKoreaFailure>;
 
-const fetchKoreaCityData = () => {
+export const fetchKoreaCityData = () => {
     return async (dispatch: Dispatch<KoreaAction>) => {
         dispatch(fetchKoreaRequest("city"));
         await axios
-            .get(cityUrl)
+            .get<KoreaCityDataType>(cityUrl)
             .then((response) => {
                 dispatch(fetchKoreaSuccess(response.data, "city"));
             })
@@ -55,10 +56,9 @@ const fetchKoreaCityData = () => {
 
 export const fetchKoreaData = () => {
     return async (dispatch: Dispatch<KoreaAction>) => {
-        fetchKoreaCityData();
         dispatch(fetchKoreaRequest("korea"));
         await axios
-            .get(koreaUrl)
+            .get<KoreaDataType>(koreaUrl)
             .then((response) => {
                 dispatch(fetchKoreaSuccess(response.data, "korea"));
             })
@@ -70,16 +70,17 @@ export const fetchKoreaData = () => {
 
 // reducer
 // 모듈에서 관리할 상태의 타입
+
 type KoreaState = {
     koreaData: {
         loading: boolean;
         err: string;
-        data: object[];
+        data: KoreaDataType;
     };
     cityData: {
         loading: boolean;
         err: string;
-        data: object[];
+        data: KoreaCityDataType;
     };
 };
 
@@ -87,12 +88,12 @@ const initialState: KoreaState = {
     koreaData: {
         loading: true,
         err: "",
-        data: [],
+        data: koreaData,
     },
     cityData: {
         loading: true,
         err: "",
-        data: [],
+        data: koreaCityData,
     },
 };
 
@@ -120,12 +121,12 @@ export default function reducer(state: KoreaState = initialState, action: KoreaA
             case FETCH_KOREA_FAILURE:
                 if (action.value === "korea") {
                     draft.koreaData.loading = false;
-                    draft.koreaData.data = [];
+                    draft.koreaData.data = koreaData;
                     draft.koreaData.err = action.payload;
                     break;
                 } else {
                     draft.cityData.loading = false;
-                    draft.cityData.data = [];
+                    draft.cityData.data = koreaCityData;
                     draft.cityData.err = action.payload;
                     break;
                 }

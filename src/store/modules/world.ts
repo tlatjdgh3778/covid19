@@ -3,6 +3,7 @@ import axios from "axios";
 import produce from "immer";
 import { worldUrl, countriesUrl } from "utils/constant";
 import { Dispatch } from "redux";
+import { WorldDataType, worldData, WorldCountriesDataType } from "utils/types/worldData";
 
 // actionTypes
 const FETCH_WORLD_REQUEST = "world/FETCH_WORLD_REQUEST" as const;
@@ -17,7 +18,7 @@ export const fetchWorldRequest = (value: string) => {
     };
 };
 
-export const fetchWorldSuccess = (data: object[], value: string) => {
+export const fetchWorldSuccess = (data: any, value: string) => {
     return {
         type: FETCH_WORLD_SUCCESS,
         payload: data,
@@ -42,7 +43,7 @@ export const fetchWorldCountriesData = () => {
     return async (dispatch: Dispatch<WorldAction>) => {
         dispatch(fetchWorldRequest("countries"));
         await axios
-            .get(countriesUrl)
+            .get<WorldCountriesDataType[]>(countriesUrl)
             .then((response) => {
                 dispatch(fetchWorldSuccess(response.data, "countries"));
             })
@@ -57,7 +58,7 @@ export const fetchWorldData = () => {
         fetchWorldCountriesData();
         dispatch(fetchWorldRequest("world"));
         await axios
-            .get(worldUrl)
+            .get<WorldDataType>(worldUrl)
             .then((response) => {
                 dispatch(fetchWorldSuccess(response.data, "world"));
             })
@@ -73,12 +74,12 @@ type WorldState = {
     worldData: {
         loading: boolean;
         err: string;
-        data: object[];
+        data: WorldDataType;
     };
     countriesData: {
         loading: boolean;
         err: string;
-        data: object[];
+        data: WorldCountriesDataType[];
     };
 };
 
@@ -86,7 +87,7 @@ const initialState: WorldState = {
     worldData: {
         loading: true,
         err: "",
-        data: [],
+        data: worldData,
     },
     countriesData: {
         loading: true,
@@ -119,7 +120,7 @@ export default function reducer(state: WorldState = initialState, action: WorldA
             case FETCH_WORLD_FAILURE:
                 if (action.value === "world") {
                     draft.worldData.loading = false;
-                    draft.worldData.data = [];
+                    draft.worldData.data = worldData;
                     draft.worldData.err = action.payload;
                     break;
                 } else {
